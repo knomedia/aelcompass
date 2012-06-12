@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:TabbedViewNavigatorApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
-								  xmlns:s="library://ns.adobe.com/flex/spark" applicationDPI="160" >
+								  xmlns:s="library://ns.adobe.com/flex/spark" applicationDPI="160" xmlns:config="com.knomedia.config.*" >
 	<s:ViewNavigator label="Home" width="100%" height="100%" firstView="com.knomedia.views.HomeView"/>
 	<s:ViewNavigator label="Schedule" width="100%" height="100%" firstView="com.knomedia.views.ScheduleView"/>
 	<s:ViewNavigator label="Twitter" width="100%" height="100%" firstView="com.knomedia.views.TwitterView"/>
 	<s:ViewNavigator label="Search" width="100%" height="100%" firstView="com.knomedia.views.SearchView"/>
 	<fx:Declarations>
-		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<config:SwizSetupInit id="swiz" />
 	</fx:Declarations>
 	
 	<fx:Script>
