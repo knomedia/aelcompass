@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="Schedule"
+		creationComplete="init()">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			import com.knomedia.events.RegistrationServiceEvent;
+			import com.knomedia.models.Session;
+			import com.knomedia.services.RegistrationService;
+			
+			import mx.collections.ArrayCollection;
+			private var dict:Dictionary;
+			
+			private function init():void
+			{
+				
+				createSortDictionary();
+				
+				var srv:RegistrationService = new RegistrationService();
+				srv.addEventListener(RegistrationServiceEvent.ALL_SESSIONS_LOADED, onSessionsLoaded);
+				srv.getAllPresentationData();
+			}
+			
+			private function createSortDictionary():void
+			{
+				dict = new Dictionary();
+				dict[ "sunday" ] = 0;
+				dict[ "monday" ] = 1;
+				dict[ "tuesday" ] = 2;
+				dict[ "wednesday" ] = 3;
+				dict[ "thursday" ] = 4;
+				dict[ "friday" ] = 5;
+				dict[ "saturday" ] = 6;
+			}
+			
+			private function compareDayStrings( a:Object, b:Object ):int
+			{
+				var aIndex:int = dict[ (a as String).toLowerCase() ];
+				var bIndex:int = dict[ (b as String).toLowerCase() ];
+				
+				var difference:int = aIndex - bIndex;
+				var direction:int =  ( difference < 0 )?  -1 : 1;
+				return direction;
+				
+			}
+			
+			private function getUniqueDays( data:Array ):Array
+			{
+				var foundValues:Array = [];
+				
+				for each(var session:Session in data)
+				{
+					if ( foundValues.indexOf( session.day ) == -1 && session.day != null )
+					{
+						foundValues.push( session.day );
+					}
+				}
+				foundValues.sort( compareDayStrings );
+				return foundValues;
+			}
+
+			private function onSessionsLoaded(event:RegistrationServiceEvent):void
+			{
+				sessionList.dataProvider = new ArrayCollection( getUniqueDays( event.data ) );
+			}
+		]]>
+	</fx:Script>
+	
+	<s:List width="90%" 
+			horizontalCenter="0" verticalCenter="0"
+			id="sessionList"
+			labelField="name"/>
+</s:View>
