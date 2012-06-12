@@ -4,7 +4,6 @@
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
-	
 	<s:List width="90%" horizontalCenter="0" height="100%">
 	</s:List>
 </s:View>
