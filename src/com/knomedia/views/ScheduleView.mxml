@@ -15,12 +15,14 @@
 			import mx.collections.ArrayCollection;
 			private var dict:Dictionary;
 			
+			[Inject]
+			public var srv:RegistrationService;
+			
 			private function init():void
 			{
 				
 				createSortDictionary();
 				
-				var srv:RegistrationService = new RegistrationService();
 				srv.addEventListener(RegistrationServiceEvent.ALL_SESSIONS_LOADED, onSessionsLoaded);
 				srv.getAllPresentationData();
 			}
