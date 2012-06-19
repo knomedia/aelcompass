@@ -2,7 +2,7 @@
 <s:TabbedViewNavigatorApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
 								  xmlns:s="library://ns.adobe.com/flex/spark" applicationDPI="160"
 								  xmlns:config="com.knomedia.config.*"
-								  >
+								  applicationComplete="onAppLoaded()">
 	<s:ViewNavigator label="Home" width="100%" height="100%" firstView="com.knomedia.views.HomeView"/>
 	<s:ViewNavigator label="Schedule" width="100%" height="100%" firstView="com.knomedia.views.ScheduleView"/>
 	<s:ViewNavigator label="Twitter" width="100%" height="100%" firstView="com.knomedia.views.TwitterView"/>
@@ -13,7 +13,15 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import com.knomedia.events.AppEvent;
 			
+			[Dispatcher]
+			public var dispatcher:IEventDispatcher;
+			
+			private function onAppLoaded():void
+			{
+					dispatcher.dispatchEvent( new AppEvent( AppEvent.INIT ) );
+			}
 			
 		]]>
 	</fx:Script>

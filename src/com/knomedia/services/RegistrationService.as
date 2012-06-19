@@ -9,9 +9,10 @@ package com.knomedia.services
 	import mx.rpc.events.ResultEvent;
 	import mx.rpc.http.mxml.HTTPService;
 	
-	[Event(name="allSessionsLoaded", type="com.knomedia.events.RegistrationServiceEvent")]
 	public class RegistrationService extends EventDispatcher
 	{
+		[Dispatcher]
+		public var dispatcher:IEventDispatcher;
 		
 		private var _srv:HTTPService;
 		
@@ -29,12 +30,12 @@ package com.knomedia.services
 			params.ws_action = ServiceActions.GET_ALL_PRESENTATION_DATA;
 			params.ws_id = params.test_ws_id;
 			params.registration_id = params.test_registration_id;
-			_srv.addEventListener( ResultEvent.RESULT, onResult);
+			_srv.addEventListener( ResultEvent.RESULT, onAllPresentationDataLoaded);
 			
 			_srv.send( params );
 		}
 
-		private function onResult(event:ResultEvent):void
+		private function onAllPresentationDataLoaded(event:ResultEvent):void
 		{
 			var allSessions:Object =  JSON.parse( String(event.result) );
 			var actualSessions:Array = [];
@@ -44,7 +45,7 @@ package com.knomedia.services
 			}
 			
 			var evt:RegistrationServiceEvent = new RegistrationServiceEvent( RegistrationServiceEvent.ALL_SESSIONS_LOADED, actualSessions );
-			dispatchEvent( evt );
+			dispatcher.dispatchEvent( evt );
 		}
 	}
 }

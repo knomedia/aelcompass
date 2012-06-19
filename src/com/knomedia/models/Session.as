@@ -1,5 +1,6 @@
 package com.knomedia.models
 {
+	[RemoteClass(alias="com.knomedia.models")]
 	public class Session
 	{
 		public var head:String;
@@ -33,7 +34,7 @@ package com.knomedia.models
 			session.name = obj.se_name;
 			session.track = obj.se_track;
 			session.type = obj.se_type;
-			session.info = obj.se_more_info;
+			session.info =  cleanUpInfo( obj.se_more_info, session.name);
 			session.limit = obj.se_limit;
 			session.sessionId = obj.se_session_id;
 			session.preReq = obj.se_prereq;
@@ -42,6 +43,40 @@ package com.knomedia.models
 			session.end = obj.se_end_1;
 			
 			return session;
+		}
+		
+		private static function cleanUpInfo( info:Object, name:String):String
+		{
+			var infoString:String = ( info == null )? "<p>" + name + "<br />Details to follow...</p>" : String(info);
+			if ( infoString != "" && true)
+			{
+				// remove line breaks
+				var patrn:RegExp = new RegExp("\r\n", "g");
+				infoString = infoString.replace( patrn, "");
+				// remove tabs
+				patrn = new RegExp("\t", "g");
+				infoString = infoString.replace( patrn, "" );
+				//trace(infoString);
+				// remove name
+				patrn = new RegExp( "\<b>.*?</b>", "i");
+				infoString = infoString.replace(patrn, "");
+				
+				// Pulling intro <p><br /> tags w or w/o a space
+				patrn = new RegExp("\<p><br( |)/>", "is");
+				infoString = infoString.replace(patrn, "");
+				
+				// pull last </p> tag
+				patrn = new RegExp("\</p>", "i");
+				infoString = infoString.replace( patrn, "" );
+				
+				// replace <br /> with \n\n
+				patrn = new RegExp("\<br( |)/>", "gi");
+				infoString = infoString.replace( patrn, "<br /><br />");
+				//trace(infoString);
+				
+				infoString = "<p>" + infoString + "</p>";
+			}
+			return infoString;
 		}
 	}
 }

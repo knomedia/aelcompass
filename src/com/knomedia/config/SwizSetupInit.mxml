@@ -9,7 +9,7 @@
 		</swiz:config>
 
 		<swiz:loggingTargets>
-			<swiz:SwizTraceTarget id="traceTarget" />
+			<!--<swiz:SwizTraceTarget id="traceTarget" />-->
 		</swiz:loggingTargets>
 
 
