@@ -62,7 +62,7 @@ package com.knomedia.models
 				infoString = infoString.replace(patrn, "");
 				
 				// Pulling intro <p><br /> tags w or w/o a space
-				patrn = new RegExp("\<p><br( |)/>", "is");
+				patrn = new RegExp("\<p>( *|)<br( |)/>( *|)", "is");
 				infoString = infoString.replace(patrn, "");
 				
 				// pull last </p> tag
