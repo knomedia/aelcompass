@@ -44,10 +44,14 @@ package com.knomedia.views.presentationModels
 			_pushedViewNav.pushView( AuthenticationView );
 			inAuthentication = true;
 		}
+		[EventHandler(event="RegistrationServiceEvent.AUTHENTICATION_COMPLETE")]
 		public function hideLogin():void
 		{
+			trace(" authentication was completed... closing auth window");
 			inAuthentication = false;
 			_pushedViewNav.popToFirstView();
 		}
+		
+		
 	}
 }

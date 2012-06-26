@@ -87,8 +87,24 @@ package com.knomedia.services
 		{
 			_srv.removeEventListener( ResultEvent.RESULT, onAuthenticationResult );
 			var userData:Object = UserDataFactory.createUserDataFromJSON( event.result as String );
-			
-			var evt:RegistrationServiceEvent = new RegistrationServiceEvent(RegistrationServiceEvent.AUTHENTICATION_COMPLETE, null, userData );
+			var evt:RegistrationServiceEvent;
+			if ( isValidUserData( userData ) )
+			{
+				evt = new RegistrationServiceEvent(RegistrationServiceEvent.AUTHENTICATION_COMPLETE, null, userData );
+			} else {
+				evt = new RegistrationServiceEvent( RegistrationServiceEvent.AUTHENTICATION_FAILED, null, userData );
+			}
+			dispatcher.dispatchEvent( evt );
+		}
+		
+		private function isValidUserData( userData:Object ):Boolean
+		{
+			var ok:Boolean = false;
+			if ( userData.hasOwnProperty( "last_name" ) )
+			{
+				ok = true;
+			}
+			return ok;
 		}
 	}
 }

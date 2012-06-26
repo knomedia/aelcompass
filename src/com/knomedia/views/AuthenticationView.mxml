@@ -2,7 +2,7 @@
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		xmlns:s="library://ns.adobe.com/flex/spark" title="Registration ID"
 		actionBarVisible="false"
-		viewActivate="pm.onActivate()"
+		viewActivate="pm.onActivate( errorTF, registrationTF )"
 		viewDeactivate="pm.onDeactivate()">
 	
 	<fx:Script>
@@ -27,6 +27,7 @@
 	
 	<s:VGroup height="100%" width="100%" verticalAlign="middle">
 		
+		<s:Label id="errorTF" color="0xFF0000" text="" />
 		<s:TextInput id="registrationTF" width="100%" prompt="Registration ID" height="45" />
 		<s:Button width="100%"
 				  label="Submit"
@@ -34,6 +35,6 @@
 	</s:VGroup>
 	
 	<s:Button width="100%"
-			  label="Need to register?"
+			  label="Need Help?"
 			  click="pm.openRegPage()"/>
 </s:View>

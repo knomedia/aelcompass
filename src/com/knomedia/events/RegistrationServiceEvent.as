@@ -6,6 +6,7 @@ package com.knomedia.events
 	{
 		public static const ALL_SESSIONS_LOADED:String = "allSessionsLoaded";
 		public static const AUTHENTICATION_COMPLETE:String = "authenticationComplete";
+		public static const AUTHENTICATION_FAILED:String = "authenticationFailed"
 		public static const SERVICE_ERROR:String = "serviceError";
 
 		private var _sessionData:Array;

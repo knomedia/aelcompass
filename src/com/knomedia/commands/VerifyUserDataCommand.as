@@ -28,9 +28,7 @@ package com.knomedia.commands
 		{
 			if ( userData.registrationId == "" || userData.userData == null )
 			{
-				trace("VerifyUserDataCommand.execute(): Previous user data NOT available");
 				dispatcher.dispatchEvent( new AppEvent(AppEvent.AUTH_NEEDED, null) );
-				
 			} else {
 				trace("VerifyUserDataCommand.execute(): Previous user data cached. good to go");
 				
