@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		xmlns:s="library://ns.adobe.com/flex/spark" title="Registration ID">
+		xmlns:s="library://ns.adobe.com/flex/spark" title="Registration ID"
+		actionBarVisible="false"
+		viewActivate="pm.onActivate()"
+		viewDeactivate="pm.onDeactivate()">
 	
 	<fx:Script>
 		<![CDATA[
-			import flash.net.navigateToURL;
+			import com.knomedia.views.presentationModels.AuthenticationViewPM;
 			
-			private const REG_URL:String = "https://www.ce1.com/cgi-bin/form-proc4v2.cgi?client_id=ADOBE&event_id=Adobe%20Education%20Leader%20Institute%202012"
-			protected function openRegPage():void
-			{
-				navigateToURL( new URLRequest( REG_URL ) );		
-			}
-			
-			protected function onSubmit():void
-			{
-			}
+			[Inject]
+			public var pm:AuthenticationViewPM;
 			
 		]]>
 	</fx:Script>
@@ -34,10 +30,10 @@
 		<s:TextInput id="registrationTF" width="100%" prompt="Registration ID" height="45" />
 		<s:Button width="100%"
 				  label="Submit"
-				  click="onSubmit()"/>
+				  click="pm.onSubmit( registrationTF.text )"/>
 	</s:VGroup>
 	
 	<s:Button width="100%"
 			  label="Need to register?"
-			  click="openRegPage()"/>
+			  click="pm.openRegPage()"/>
 </s:View>

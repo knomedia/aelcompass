@@ -18,6 +18,8 @@ package com.knomedia.views.presentationModels
 		private var _appNav:TabbedViewNavigator;
 		private var _pushedViewNav:ViewNavigator;
 		
+		public var inAuthentication:Boolean = false;
+		
 		public function AELCompassPM(target:IEventDispatcher=null)
 		{
 			super(target);
@@ -34,13 +36,17 @@ package com.knomedia.views.presentationModels
 			return _appNav.selectedNavigator as ViewNavigator;
 		}
 		
+		[EventHandler(event="AppEvent.AUTH_NEEDED")]
 		public function showLogin():void
 		{
+			
 			_pushedViewNav = getSelectedNav();
 			_pushedViewNav.pushView( AuthenticationView );
+			inAuthentication = true;
 		}
 		public function hideLogin():void
 		{
+			inAuthentication = false;
 			_pushedViewNav.popToFirstView();
 		}
 	}

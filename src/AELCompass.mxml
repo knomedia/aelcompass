@@ -32,6 +32,14 @@
 				
 			}
 			
+			override protected function backKeyUpHandler(event:KeyboardEvent):void
+			{
+				if ( !pm.inAuthentication )
+				{
+					super.backKeyUpHandler( event );
+				} 
+			}
+			
 		]]>
 	</fx:Script>
 </s:TabbedViewNavigatorApplication>
