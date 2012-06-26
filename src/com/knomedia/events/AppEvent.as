@@ -5,7 +5,8 @@ package com.knomedia.events
 	public class AppEvent extends Event
 	{
 		public static const INIT:String = "init";
-
+		public static const AUTH_NEEDED:String = "authNeeded";
+		public static const REQUEST_AUTH:String = "requestAuth";
 		private var _data:Object;
 
 		public function AppEvent(type:String, data:Object = null)

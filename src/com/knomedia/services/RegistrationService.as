@@ -1,8 +1,8 @@
 package com.knomedia.services
 {
 	import com.adobe.protocols.dict.events.ErrorEvent;
-	import com.knomedia.factories.UserDataFactory;
 	import com.knomedia.events.RegistrationServiceEvent;
+	import com.knomedia.factories.UserDataFactory;
 	import com.knomedia.models.Session;
 	
 	import flash.events.EventDispatcher;
@@ -72,12 +72,12 @@ package com.knomedia.services
 		//					AUTHENTICATE USER
 		// ----------------------------------------------------------
 		
-		public function authenticateUser():void
+		public function authenticateUser( registrationId:String ):void
 		{
 			var params:ServiceParams = new ServiceParams();
 			params.ws_action = ServiceActions.AUTHENTICATE_USER;
 			params.ws_id = params.test_ws_id;
-			params.registration_id = params.test_registration_id;
+			params.registration_id = registrationId;
 			_srv.addEventListener( ResultEvent.RESULT, onAuthenticationResult);
 			
 			_srv.send( params );

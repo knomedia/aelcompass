@@ -1,6 +1,7 @@
 package com.knomedia.commands
 {
 	import com.knomedia.cache.UserDataCache;
+	import com.knomedia.events.AppEvent;
 	
 	import flash.events.Event;
 	import flash.events.IEventDispatcher;
@@ -27,9 +28,12 @@ package com.knomedia.commands
 		{
 			if ( userData.registrationId == "" || userData.userData == null )
 			{
-				// show auth view and get user id	
+				trace("VerifyUserDataCommand.execute(): Previous user data NOT available");
+				dispatcher.dispatchEvent( new AppEvent(AppEvent.AUTH_NEEDED, null) );
+				
 			} else {
-				// All good. Show cached data, and load from server in BG
+				trace("VerifyUserDataCommand.execute(): Previous user data cached. good to go");
+				
 				
 			}
 		}
