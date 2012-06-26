@@ -7,7 +7,11 @@ package com.knomedia.views.presentationModels
 	import flash.events.IEventDispatcher;
 	
 	import spark.components.TabbedViewNavigator;
+	import spark.components.View;
 	import spark.components.ViewNavigator;
+	import spark.transitions.SlideViewTransition;
+	import spark.transitions.ViewTransitionBase;
+	import spark.transitions.ViewTransitionDirection;
 	
 	public class AELCompassPM extends EventDispatcher
 	{
@@ -20,10 +24,13 @@ package com.knomedia.views.presentationModels
 		
 		public var inAuthentication:Boolean = false;
 		
+		private var _transition:SlideViewTransition;
+		
 		public function AELCompassPM(target:IEventDispatcher=null)
 		{
 			super(target);
 		}
+		
 		
 		public function register( viewNavigator:TabbedViewNavigator ):void
 		{
@@ -36,12 +43,22 @@ package com.knomedia.views.presentationModels
 			return _appNav.selectedNavigator as ViewNavigator;
 		}
 		
+		private function getTransition( intro:Boolean = true ):ViewTransitionBase
+		{
+			if ( !_transition )
+			{
+				_transition = new SlideViewTransition();
+			}
+			_transition.direction = ( intro )? ViewTransitionDirection.RIGHT : ViewTransitionDirection.LEFT;
+			return _transition
+		}
+		
 		[EventHandler(event="AppEvent.AUTH_NEEDED")]
 		public function showLogin():void
 		{
 			
 			_pushedViewNav = getSelectedNav();
-			_pushedViewNav.pushView( AuthenticationView );
+			_pushedViewNav.pushView( AuthenticationView, null, null, getTransition() );
 			inAuthentication = true;
 		}
 		[EventHandler(event="RegistrationServiceEvent.AUTHENTICATION_COMPLETE")]
@@ -49,7 +66,7 @@ package com.knomedia.views.presentationModels
 		{
 			trace(" authentication was completed... closing auth window");
 			inAuthentication = false;
-			_pushedViewNav.popToFirstView();
+			_pushedViewNav.popToFirstView(getTransition( false )  );
 		}
 		
 		
