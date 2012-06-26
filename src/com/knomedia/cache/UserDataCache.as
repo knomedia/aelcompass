@@ -19,6 +19,16 @@ package com.knomedia.cache
 		{
 			so.setValue( "registrationId", value );
 		}
+		
+		public function set userData( value:Object ):void
+		{
+			so.setValue( "userData", value );
+		}
+		
+		public function get userData():Object
+		{
+			return so.getValue( "userData", {} );
+		}
 
 		
 	}

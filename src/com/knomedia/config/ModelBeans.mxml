@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <swiz:BeanProvider xmlns:fx="http://ns.adobe.com/mxml/2009" 
-				   xmlns:swiz="http://swiz.swizframework.org" xmlns:models="com.knomedia.models.*" xmlns:cache="com.knomedia.cache.*">
+				   xmlns:swiz="http://swiz.swizframework.org" xmlns:models="com.knomedia.models.*" xmlns:cache="com.knomedia.cache.*" xmlns:presentationModels="com.knomedia.views.presentationModels.*">
 
 	<cache:SessionCache id="sessionCache" />
 	<models:SessionCollection id="sessions" />
+	
+	<cache:UserDataCache id="userCache" />
+	
+	
+	<!-- Presentation Models -->
+	<presentationModels:AELCompassPM id="appPM" />
 
 </swiz:BeanProvider>
 

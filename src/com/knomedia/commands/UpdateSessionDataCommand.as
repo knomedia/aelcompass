@@ -24,7 +24,7 @@ package com.knomedia.commands
 		
 		public function set event(value:Event):void
 		{
-			_sessionData = RegistrationServiceEvent(value).data;
+			_sessionData = RegistrationServiceEvent(value).sessionData;
 		}
 		
 		public function execute():void
@@ -34,6 +34,7 @@ package com.knomedia.commands
 			sessionCollection.allSessions = _sessionData;
 			sessionCache.setAllSessions( _sessionData );
 			sessionCache.lastUpdated = new Date();
+			trace("UpdateSessionDataCommand... sessionCollection updated");
 		}
 	}
 }

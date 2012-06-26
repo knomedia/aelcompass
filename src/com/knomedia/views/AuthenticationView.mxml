@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="Registration ID">
+	
+	<fx:Script>
+		<![CDATA[
+			import flash.net.navigateToURL;
+			
+			private const REG_URL:String = "https://www.ce1.com/cgi-bin/form-proc4v2.cgi?client_id=ADOBE&event_id=Adobe%20Education%20Leader%20Institute%202012"
+			protected function openRegPage():void
+			{
+				navigateToURL( new URLRequest( REG_URL ) );		
+			}
+			
+			protected function onSubmit():void
+			{
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:layout>
+		<s:VerticalLayout paddingTop="45"
+						  paddingRight="15"
+						  paddingBottom="15"
+						  paddingLeft="15" />
+	</s:layout>
+	
+	<s:VGroup height="100%" width="100%" verticalAlign="middle">
+		
+		<s:TextInput id="registrationTF" width="100%" prompt="Registration ID" height="45" />
+		<s:Button width="100%"
+				  label="Submit"
+				  click="onSubmit()"/>
+	</s:VGroup>
+	
+	<s:Button width="100%"
+			  label="Need to register?"
+			  click="openRegPage()"/>
+</s:View>

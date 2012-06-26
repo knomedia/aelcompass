@@ -16,7 +16,7 @@ package com.knomedia.commands
 		{
 			super.mapCommands();
 			
-			mapCommand( AppEvent.INIT, LoadInitialDataCommand, AppEvent, true );
+			mapCommand( AppEvent.INIT, VerifyUserDataCommand, AppEvent, true );
 			mapCommand( RegistrationServiceEvent.ALL_SESSIONS_LOADED, UpdateSessionDataCommand, RegistrationServiceEvent, false );
 		}
 	}

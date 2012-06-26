@@ -1,6 +1,7 @@
 package com.knomedia.commands
 {
 	import com.knomedia.cache.SessionCache;
+	import com.knomedia.cache.UserDataCache;
 	import com.knomedia.models.SessionCollection;
 	import com.knomedia.services.RegistrationService;
 	
@@ -17,6 +18,9 @@ package com.knomedia.commands
 		[Inject]
 		public var regService:RegistrationService;
 		
+		[Inject]
+		public var userCache:UserDataCache;
+		
 		public function LoadInitialDataCommand()
 		{
 		}
@@ -29,7 +33,21 @@ package com.knomedia.commands
 			sessionCollection.allSessions = sessionCache.getAllSessions();
 			
 			//Load possible updates from services
-			regService.getAllPresentationData();
+			/*
+				Check for previous registration-id. If you have one, load all data, and then
+				authenticate user again. If you don't have one, go ahead and prompt for it
+			*/
+			
+			/*if ( userCache.registrationId != "")
+			{
+				regService.getAllPresentationData();
+			} else {
+				// prompt for registration-id
+			}*/
+			
+			
+			regService.authenticateUser();
+			
 			
 			
 			/* Consider a tactic that pushes all news and session data to a SharedObjectBean
