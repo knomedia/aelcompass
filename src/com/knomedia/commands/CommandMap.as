@@ -20,6 +20,7 @@ package com.knomedia.commands
 			super.mapCommands();
 			
 			mapCommand( AppEvent.INIT, VerifyUserDataCommand, AppEvent, false );
+			mapCommand( AppEvent.OKAY_TO_LOAD, LoadInitialDataCommand, AppEvent, false );
 			mapCommand( AppEvent.REQUEST_AUTH, RequestAuthenticationCommand, AppEvent, false );
 			mapCommand( RegistrationServiceEvent.AUTHENTICATION_COMPLETE, SaveUserDataCommand, RegistrationServiceEvent, false );
 			

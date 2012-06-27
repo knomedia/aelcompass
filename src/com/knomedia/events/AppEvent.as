@@ -7,6 +7,8 @@ package com.knomedia.events
 		public static const INIT:String = "init";
 		public static const AUTH_NEEDED:String = "authNeeded";
 		public static const REQUEST_AUTH:String = "requestAuth";
+		public static const OKAY_TO_LOAD:String = "okayToLoad";
+		
 		private var _data:Object;
 
 		public function AppEvent(type:String, data:Object = null)

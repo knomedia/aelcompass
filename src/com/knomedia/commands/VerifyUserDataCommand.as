@@ -30,7 +30,7 @@ package com.knomedia.commands
 			{
 				dispatcher.dispatchEvent( new AppEvent(AppEvent.AUTH_NEEDED, null) );
 			} else {
-				trace("VerifyUserDataCommand.execute(): Previous user data cached. good to go");
+				dispatcher.dispatchEvent( new AppEvent( AppEvent.OKAY_TO_LOAD) );
 				
 				
 			}

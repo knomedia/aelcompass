@@ -32,21 +32,10 @@ package com.knomedia.commands
 			//Load all cached values
 			sessionCollection.allSessions = sessionCache.getAllSessions();
 			
-			//Load possible updates from services
-			/*
-				Check for previous registration-id. If you have one, load all data, and then
-				authenticate user again. If you don't have one, go ahead and prompt for it
-			*/
+			regService.getAllPresentationData();
 			
-			/*if ( userCache.registrationId != "")
-			{
-				regService.getAllPresentationData();
-			} else {
-				// prompt for registration-id
-			}*/
-			
-			
-			regService.authenticateUser();
+	
+
 			
 			
 			
