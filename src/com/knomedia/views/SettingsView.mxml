@@ -31,7 +31,7 @@
 	
 	<s:Label text="Last Synced: 12:06PM 7/28/2012" id="syncTF" width="100%" textAlign="center"/>
 			 
-	<s:Button width="100%" label="Refresh Data" icon="@Embed('styles/icons/16/refresh.png')"
+	<s:Button width="100%" label="Refresh Data" icon="@Embed('styles/icons/30/icon_refresh.png')"
 			  click="pm.refreshData()"/>
 	
 	<s:Spacer height="100%" />
