@@ -32,6 +32,7 @@
 		<s:Button width="100%"
 				  label="Submit"
 				  click="pm.onSubmit( registrationTF.text )"/>
+<!--		<s:CheckBox label="Remember ID?" selected="true" id="saveToCacheCB" />-->
 	</s:VGroup>
 	
 	<s:Button width="100%"

@@ -2,15 +2,19 @@
 <s:TabbedViewNavigatorApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
 								  xmlns:s="library://ns.adobe.com/flex/spark" applicationDPI="160"
 								  xmlns:config="com.knomedia.config.*"
+								  
 								  applicationComplete="onAppLoaded()">
 	<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.HomeView"
 					 icon="@Embed('styles/icons/16/feed.png')"/>
 	<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.ScheduleView"
-					 icon="@Embed('styles/icons/16/date.png')"/>
-	<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.TwitterView"
-					 icon="@Embed('styles/icons/16/comment.png')"/>
-	<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.SearchView"
-					 icon="@Embed('styles/icons/16/search.png')"/>
+					 icon="@Embed('styles/icons/16/date.png')" />
+	<!--<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.TwitterView"
+					 icon="@Embed('styles/icons/16/comment.png')"/>-->
+	<!--<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.SearchView"
+					 icon="@Embed('styles/icons/16/search.png')"/>-->
+
+	<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.SettingsView"
+					 icon="@Embed('styles/icons/16/config.png')"  />
 	<fx:Declarations>
 		<config:SwizSetupInit id="swiz" />
 	</fx:Declarations>
@@ -28,7 +32,8 @@
 			
 			private function onAppLoaded():void
 			{
-				pm.register( TabbedViewNavigator( this.tabbedNavigator ) );
+				var tn:TabbedViewNavigator = TabbedViewNavigator( this.tabbedNavigator ); 
+				pm.register( tn );
 				
 			}
 			
