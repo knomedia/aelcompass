@@ -16,7 +16,8 @@
 			{
 				_session = Session( data );
 				this.title = _session.day + ": " + _session.start;
-				trace(_session.info);
+				titleTF.text = _session.name;
+				//trace(_session.info);
 				StyleableTextField( infoTF.textDisplay ).htmlText = _session.info;
 				
 				var infoLines:int = 0;
@@ -25,7 +26,8 @@
 					infoLines += StyleableTextField(infoTF.textDisplay).getLineMetrics(i).height;
 				}
 				infoTF.height = infoLines;
-				trace("height adjusted to: " + infoTF.height);
+				//trace("height adjusted to: " + infoTF.height);
+				attendingCB.selected = _session.userAttending;
 			}
 			
 		]]>
@@ -45,6 +47,7 @@
 		<s:Button label="Sessions" click="navigator.popView()" />
 	</s:navigationContent>
 	
+	<s:TextArea width="100%" editable="false" borderVisible="false" id="titleTF" />
 	<s:Scroller width="100%" height="100%"
 				horizontalScrollPolicy="off"
 				verticalScrollPolicy="auto">

@@ -46,7 +46,7 @@ package com.knomedia.commands
 			sessionCollection.allSessions = _sessionData;
 			sessionCache.setAllSessions( _sessionData );
 			sessionCache.lastUpdated = new Date();
-			trace("UpdateSessionDataCommand: updated session data at " + sessionCache.lastUpdated );
+			//trace("UpdateSessionDataCommand: updated session data at " + sessionCache.lastUpdated );
 			dispatcher.dispatchEvent( new SessionCacheEvent( SessionCacheEvent.UPDATED ) );
 			//need to apply user data to the sessions ! ie which sessions are they signed up for
 		}
