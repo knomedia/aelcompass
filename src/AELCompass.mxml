@@ -5,16 +5,16 @@
 								  
 								  applicationComplete="onAppLoaded()">
 	<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.HomeView"
-					 icon="@Embed('styles/icons/16/feed.png')"/>
+					 icon="@Embed('styles/icons/30/icon_home.png')"/>
 	<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.ScheduleView"
-					 icon="@Embed('styles/icons/16/date.png')" />
+					 icon="@Embed('styles/icons/30/icon_calendar.png')" />
 	<!--<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.TwitterView"
 					 icon="@Embed('styles/icons/16/comment.png')"/>-->
 	<!--<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.SearchView"
 					 icon="@Embed('styles/icons/16/search.png')"/>-->
 
 	<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.SettingsView"
-					 icon="@Embed('styles/icons/16/config.png')"  />
+					 icon="@Embed('styles/icons/30/icon_manage.png')"  />
 	<fx:Declarations>
 		<config:SwizSetupInit id="swiz" />
 	</fx:Declarations>

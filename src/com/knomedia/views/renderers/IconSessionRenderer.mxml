@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:IconItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					xmlns:s="library://ns.adobe.com/flex/spark"  labelField="name" 
+					iconWidth="16" iconHeight="16"
+					iconFunction="createIcon"
+					decorator="@Embed('styles/icons/30/icon_controls_5.png')"
+					messageField="countStats"
+					fontSize="12"
+					messageStyleName="messageFontStyle"
+					>
+	<fx:Style>
+		@namespace s "library://ns.adobe.com/flex/spark";
+		
+		.messageFontStyle {
+			fontSize: 10;
+			color: #949E94;
+		}
+	</fx:Style>
+	<fx:Script>
+		<![CDATA[
+			import com.knomedia.models.Session;
+			
+			[Embed(source="styles/icons/30/icon_star.png")]
+			public var attendingIcon:Class;
+			private var _matrix:Matrix;
+			private var _topColor:uint = 0xFFFFFF;
+			private var _loColor:uint = 0xC6C6C1;
+			
+			override public function set data(value:Object):void
+			{
+				super.data = value;
+				var attending:Boolean = ( Session( value ).userAttending );
+				_topColor = (attending)? 0xE7F4DF : 0xFFFFFF;
+				_loColor = (attending)? 0xB4F28E : 0xC6C6C1;
+				
+			}
+			
+			private function createIcon( item:Object ):Object
+			{
+				if ( Session( item ).userAttending )
+				{
+					return attendingIcon;
+				} else {
+					return null;
+				}
+			}
+			
+			override protected function drawBackground(unscaledWidth:Number, unscaledHeight:Number):void
+			{
+				graphics.clear();
+				_matrix = new Matrix();
+				_matrix.createGradientBox( unscaledWidth, unscaledHeight, 1.570796325, 0, 0 );
+				graphics.beginGradientFill( GradientType.LINEAR, [_topColor, _loColor], [1,1], [0, 255], _matrix );
+				graphics.drawRect( 0, 0, unscaledWidth, unscaledHeight );
+				graphics.endFill();
+			}
+		]]>
+	</fx:Script>
+	<!--<s:VGroup width="100%" height="100%" >
+		<s:Rect width="100%" height="100%">
+			<s:fill>
+				<s:LinearGradient rotation="90">
+					<s:GradientEntry color="0xF7F7F1" />
+					<s:GradientEntry color="0xC6C6C1" />
+				</s:LinearGradient>
+			</s:fill>
+		</s:Rect>
+	</s:VGroup>-->
+		
+</s:IconItemRenderer>
