@@ -25,6 +25,11 @@ package com.knomedia.models
 		{
 		}
 		
+		public function get countStats():String
+		{
+			return count + " of " + limit + " seats taken";
+		}
+		
 		public static function sessionFromObject( obj:Object ):Session
 		{
 			var session:Session = new Session();
