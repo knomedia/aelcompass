@@ -19,6 +19,8 @@ package com.knomedia.models
 		public var start:String;
 		public var end:String;
 		
+		public var userAttending:Boolean = false;
+		
 		public function Session()
 		{
 		}
