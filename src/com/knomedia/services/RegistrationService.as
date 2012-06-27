@@ -19,6 +19,8 @@ package com.knomedia.services
 		
 		private var _srv:HTTPService;
 		
+		private var _registrationId:String;
+		
 		public function RegistrationService(target:IEventDispatcher=null)
 		{
 		 	super(target);
@@ -74,12 +76,13 @@ package com.knomedia.services
 		
 		public function authenticateUser( registrationId:String ):void
 		{
+			_registrationId = registrationId;
+			
 			var params:ServiceParams = new ServiceParams();
 			params.ws_action = ServiceActions.AUTHENTICATE_USER;
 			params.ws_id = params.test_ws_id;
-			params.registration_id = registrationId;
+			params.registration_id = _registrationId;
 			_srv.addEventListener( ResultEvent.RESULT, onAuthenticationResult);
-			
 			_srv.send( params );
 		}
 
@@ -90,11 +93,12 @@ package com.knomedia.services
 			var evt:RegistrationServiceEvent;
 			if ( isValidUserData( userData ) )
 			{
-				evt = new RegistrationServiceEvent(RegistrationServiceEvent.AUTHENTICATION_COMPLETE, null, userData );
+				evt = new RegistrationServiceEvent(RegistrationServiceEvent.AUTHENTICATION_COMPLETE, null, userData, _registrationId );
 			} else {
-				evt = new RegistrationServiceEvent( RegistrationServiceEvent.AUTHENTICATION_FAILED, null, userData );
+				evt = new RegistrationServiceEvent( RegistrationServiceEvent.AUTHENTICATION_FAILED, null, userData, _registrationId );
 			}
 			dispatcher.dispatchEvent( evt );
+			_registrationId = "";
 		}
 		
 		private function isValidUserData( userData:Object ):Boolean

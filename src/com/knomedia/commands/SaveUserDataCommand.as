@@ -13,6 +13,7 @@ package com.knomedia.commands
 		public var userCache:UserDataCache;
 		
 		private var userData:Object;
+		private var regId:String;
 		public function SaveUserDataCommand()
 		{
 		}
@@ -20,12 +21,13 @@ package com.knomedia.commands
 		public function set event(value:Event):void
 		{
 			userData = RegistrationServiceEvent( value ).userData;
+			regId = RegistrationServiceEvent( value ).registrationId;
 		}
 		
 		public function execute():void
 		{
 			userCache.userData = userData;
-			
+			userCache.registrationId = regId;
 		}
 	}
 }

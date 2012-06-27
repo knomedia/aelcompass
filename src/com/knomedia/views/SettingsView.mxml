@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		xmlns:s="library://ns.adobe.com/flex/spark" title="Settings">
+		xmlns:s="library://ns.adobe.com/flex/spark" title="Settings"
+		viewActivate="onActivate(event)">
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			import com.knomedia.views.presentationModels.SettingsViewPM;
+			
+			import spark.events.ViewNavigatorEvent;
+			
+			[Inject]
+			public var pm:SettingsViewPM;
+			
+			protected function onActivate(event:ViewNavigatorEvent):void
+			{
+				pm.register( syncTF, userTF );			
+			}
+			
+		]]>
+	</fx:Script>
+	<s:layout>
+		<s:VerticalLayout paddingTop="35"
+						  paddingRight="15"
+						  paddingBottom="15"
+						  paddingLeft="15" />
+	</s:layout>
+	
+	<s:Label text="Last Synced: 12:06PM 7/28/2012" id="syncTF" />
+	<s:Button width="100%" label="Refresh Data" icon="@Embed('styles/icons/16/refresh.png')" />
+	
+	<s:Spacer height="100%" />
+	<s:Label text="Logged in as: Jason Madsen" id="userTF" />
+	<s:Button width="100%" label="Log Out" click="pm.logOut();" />
 </s:View>

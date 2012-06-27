@@ -13,7 +13,7 @@ package com.knomedia.cache
 		
 		public function get lastUpdated():Date
 		{
-			return so.getValue( "lastSessionUpdate", new Date() );
+			return so.getValue( "lastSessionUpdate", null );
 		}
 		
 		public function set lastUpdated(value:Date):void

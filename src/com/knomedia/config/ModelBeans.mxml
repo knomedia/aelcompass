@@ -11,6 +11,7 @@
 	<!-- Presentation Models -->
 	<presentationModels:AELCompassPM id="appPM" />
 	<presentationModels:AuthenticationViewPM id="authViewPM" />
+	<presentationModels:SettingsViewPM id="settingsViewPM" />
 
 </swiz:BeanProvider>
 

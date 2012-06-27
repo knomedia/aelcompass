@@ -21,8 +21,8 @@ package com.knomedia.cache
 		public function onConstruct():void
 		{
 			so.name = "AELCompassStorage";
-			so.clear();
-			trace("so is cleared");
+			/*so.clear();
+			trace("so is cleared");*/
 		}
 		
 		

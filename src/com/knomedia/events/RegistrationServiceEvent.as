@@ -11,13 +11,15 @@ package com.knomedia.events
 
 		private var _sessionData:Array;
 		private var _userData:Object;
+		private var _registrationId:String;
 
-		public function RegistrationServiceEvent(type:String, sessionData:Array, userData:Object = null)
+		public function RegistrationServiceEvent(type:String, sessionData:Array, userData:Object = null, registrationId:String = "")
 		{
 			super(type,true,true);
 
 			this._sessionData = sessionData;
 			this._userData = userData;
+			this._registrationId = registrationId;
 		}
 
 		public function get sessionData():Array
@@ -28,15 +30,19 @@ package com.knomedia.events
 		{
 			return _userData;
 		}
+		public function get registrationId():String
+		{
+			return _registrationId;
+		}
 
 		public override function clone():Event
 		{
-			return new RegistrationServiceEvent(type,sessionData,userData);
+			return new RegistrationServiceEvent(type,sessionData,userData,registrationId);
 		}
 
 		public override function toString():String
 		{
-			return formatToString("RegistrationServiceEvent","sessionData", "userData");
+			return formatToString("RegistrationServiceEvent","sessionData", "userData", "registrationId");
 		}
 	}
 }
