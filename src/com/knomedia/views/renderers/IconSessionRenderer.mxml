@@ -3,7 +3,7 @@
 					xmlns:s="library://ns.adobe.com/flex/spark"  labelField="name" 
 					iconWidth="16" iconHeight="16"
 					iconFunction="createIcon"
-					decorator="@Embed('styles/icons/30/icon_controls_5.png')"
+					decorator="@Embed('styles/icons/30/icon_arrow.png')"
 					messageField="countStats"
 					fontSize="12"
 					messageStyleName="messageFontStyle"

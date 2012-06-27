@@ -37,7 +37,7 @@
 			skinClass="com.knomedia.skins.ListSkin">
 		<s:itemRenderer>
 			<fx:Component>
-				<s:IconItemRenderer decorator="@Embed('styles/icons/30/icon_controls_5.png')"
+				<s:IconItemRenderer decorator="@Embed('styles/icons/30/icon_arrow.png')"
 									label="name"/>
 			</fx:Component>
 		</s:itemRenderer>
