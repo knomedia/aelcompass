@@ -9,6 +9,15 @@ package com.knomedia.cache
 			super(target);
 		}
 		
+		public function get lastUpdate():Date
+		{
+			return so.getValue( "lastUserDataUpdate", new Date(500) );
+		}
+		public function set lastUpdate( value:Date ):void
+		{
+			so.setValue( "lastUserDataUpdate", value );
+		}
+		
 
 		public function get registrationId():String
 		{

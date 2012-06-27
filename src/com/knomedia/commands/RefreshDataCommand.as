@@ -14,18 +14,27 @@ package com.knomedia.commands
 		[Inject]
 		public var userCache:UserDataCache;
 		
-		
+		private const REFRESH_THRESHOLD:Number = 15000; // 15 seconds
 		public function RefreshDataCommand()
 		{
 		}
 		
 		public function execute():void
 		{
-			regSrv.getAllPresentationData();
 			
-			// Determine a way to pull user data again
-			// after the previous async call is complete
-			//regSrv.authenticateUser( userCache.registrationId );
+			/*
+				If user data is older than a few seconds, re-pull user data then all presentationData
+				If user data is "recent" just pull presentationData
+			*/
+			var lastUpdateDiff:Number = (  new Date().getTime() - userCache.lastUpdate.getTime() );
+			if ( lastUpdateDiff > REFRESH_THRESHOLD )
+			{
+				trace("RefreshDataCommand: over last user data load, reloading user data");
+				regSrv.authenticateUser( userCache.registrationId );
+			} else {
+				trace("RefreshDataCommand: UNDER threshold for user data, loading up presentation data");
+				regSrv.getAllPresentationData();
+			}
 		}
 	}
 }

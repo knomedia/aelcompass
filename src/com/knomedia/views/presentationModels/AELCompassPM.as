@@ -99,7 +99,10 @@ package com.knomedia.views.presentationModels
 			tm.addEventListener(TimerEvent.TIMER_COMPLETE, delayedLoginHide );
 			tm.start();
 			inAuthentication = false;
-			_pushedViewNav.popToFirstView( getTransition( false )  );
+			if (_pushedViewNav )
+			{
+				_pushedViewNav.popToFirstView( getTransition( false )  );
+			}
 			
 		}
 		
