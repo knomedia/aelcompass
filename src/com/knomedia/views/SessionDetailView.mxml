@@ -48,16 +48,23 @@
 	</s:navigationContent>
 	
 	<s:TextArea width="100%" editable="false" borderVisible="false" id="titleTF" />
-	<s:Scroller width="100%" height="100%"
-				horizontalScrollPolicy="off"
-				verticalScrollPolicy="auto">
-		<s:VGroup width="100%" height="100%">
-			
-			<s:TextArea width="100%" id="infoTF" editable="false"
-						skinClass="spark.skins.mobile.TextAreaSkin"
-						borderVisible="false"
-						/>
-		</s:VGroup>
-	</s:Scroller>
+	<s:Group width="100%" height="100%">
+		<s:Scroller top="5" bottom="5" left="5" right="5"
+					horizontalScrollPolicy="off"
+					verticalScrollPolicy="auto">
+			<s:VGroup width="100%" height="100%">
+				
+				<s:TextArea width="100%" id="infoTF" editable="false"
+							skinClass="spark.skins.mobile.TextAreaSkin"
+							borderVisible="false"
+							/>
+			</s:VGroup>
+		</s:Scroller>
+		<s:Rect width="100%" height="100%" radiusX="5" radiusY="5" >
+			<s:stroke>
+				<s:SolidColorStroke color="0xFF0000" pixelHinting="true" />
+			</s:stroke>
+		</s:Rect>
+	</s:Group>
 	<s:CheckBox id="attendingCB" label="Attending" />
 </s:View>

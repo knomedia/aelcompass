@@ -25,11 +25,22 @@
 			
 		]]>
 	</fx:Script>
-	
+	<s:Group width="100%" height="100%"
+			>
+		
 	<s:List width="90%" 
-			horizontalCenter="0" verticalCenter="0"
+			horizontalCenter="0"  verticalCenter="0"
 			id="sessionList"
 			labelField="name"
 			dataProvider="{sessCollection.uniqueDays}"
-			change="onItemSelect(event)"/>
+			change="onItemSelect(event)"
+			skinClass="com.knomedia.skins.ListSkin">
+		<s:itemRenderer>
+			<fx:Component>
+				<s:IconItemRenderer decorator="@Embed('styles/icons/30/icon_controls_5.png')"
+									label="name"/>
+			</fx:Component>
+		</s:itemRenderer>
+	</s:List>
+	</s:Group>
 </s:View>

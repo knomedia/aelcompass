@@ -38,9 +38,20 @@
 	<s:navigationContent>
 		<s:Button label="Days" click="navigator.popView()" />
 	</s:navigationContent>
+	
+		
+	
 	<s:List width="90%" horizontalCenter="0"
-			height="90%" verticalCenter="0"
+		 	verticalCenter="0"
 			id="timesList"
 			change="onTimeSelect(event)"
-			/>
+			skinClass="com.knomedia.skins.ListSkin"
+			>
+		<s:itemRenderer>
+			<fx:Component>
+				<s:IconItemRenderer decorator="@Embed('styles/icons/30/icon_controls_5.png')"
+									label="timesList"/>
+			</fx:Component>
+		</s:itemRenderer>
+	</s:List>
 </s:View>

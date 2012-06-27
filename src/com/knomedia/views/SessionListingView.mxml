@@ -35,10 +35,11 @@
 		<s:Button label="Times" click="navigator.popView()" />
 	</s:navigationContent>
 	<s:List id="sessionList" width="90%" horizontalCenter="0"
-			height="90%" verticalCenter="0" 
+			verticalCenter="0" 
 			labelField="name"
 			change="onSessionSelect(event)"
 			itemRenderer="com.knomedia.views.renderers.IconSessionRenderer"
+			skinClass="com.knomedia.skins.ListSkin"
 			>
 		
 		
