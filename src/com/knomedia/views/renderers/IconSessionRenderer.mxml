@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:IconItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
-					xmlns:s="library://ns.adobe.com/flex/spark"  labelField="name" 
+					xmlns:s="library://ns.adobe.com/flex/spark"
+					labelField="" 
 					iconWidth="16" iconHeight="16"
 					iconFunction="createIcon"
 					decorator="@Embed('styles/icons/30/icon_arrow.png')"
-					messageField="countStats"
+					messageField="name"
 					fontSize="12"
 					messageStyleName="messageFontStyle"
+					width="100%"
 					>
 	<fx:Style>
 		@namespace s "library://ns.adobe.com/flex/spark";
 		
 		.messageFontStyle {
-			fontSize: 10;
-			color: #949E94;
+			fontSize: 13;
+			/* color: #949E94; */
 		}
 	</fx:Style>
 	<fx:Script>
@@ -51,8 +53,9 @@
 				_matrix = new Matrix();
 				_matrix.createGradientBox( unscaledWidth, unscaledHeight, 1.570796325, 0, 0 );
 				graphics.beginGradientFill( GradientType.LINEAR, [_topColor, _loColor], [1,1], [0, 255], _matrix );
-				graphics.drawRect( 0, 0, unscaledWidth, unscaledHeight );
+				graphics.drawRect( 0, 1, unscaledWidth, unscaledHeight -1  );
 				graphics.endFill();
+				
 			}
 		]]>
 	</fx:Script>

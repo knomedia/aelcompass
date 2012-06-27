@@ -41,7 +41,9 @@
 			itemRenderer="com.knomedia.views.renderers.IconSessionRenderer"
 			skinClass="com.knomedia.skins.ListSkin"
 			>
-		
+		<s:layout>
+			<s:VerticalLayout variableRowHeight="true" gap="0" horizontalAlign="justify" /> 
+		</s:layout>
 		
 	</s:List>
 </s:View>
