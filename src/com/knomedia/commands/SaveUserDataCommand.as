@@ -34,7 +34,6 @@ package com.knomedia.commands
 			userCache.userData = userData;
 			userCache.registrationId = regId;
 			userCache.lastUpdate = new Date();
-			trace("SaveUserDataCommand: updated user data at: " + userCache.lastUpdate );
 			dispatcher.dispatchEvent( new AppEvent( AppEvent.OKAY_TO_LOAD) );
 		}
 	}
