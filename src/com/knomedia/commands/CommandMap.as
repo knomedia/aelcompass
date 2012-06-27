@@ -27,6 +27,7 @@ package com.knomedia.commands
 			mapCommand( RegistrationServiceEvent.ALL_SESSIONS_LOADED, UpdateSessionDataCommand, RegistrationServiceEvent, false );
 			
 			mapCommand( SettingsEvent.LOGOUT, RemoveUserDataCommand, SettingsEvent, false );
+			mapCommand( SettingsEvent.REFRESH, RefreshDataCommand, SettingsEvent, false );
 		}
 	}
 }

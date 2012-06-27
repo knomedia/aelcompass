@@ -2,9 +2,11 @@ package com.knomedia.commands
 {
 	import com.knomedia.cache.SessionCache;
 	import com.knomedia.events.RegistrationServiceEvent;
+	import com.knomedia.events.SessionCacheEvent;
 	import com.knomedia.models.SessionCollection;
 	
 	import flash.events.Event;
+	import flash.events.IEventDispatcher;
 	
 	import org.swizframework.utils.commands.IEventAwareCommand;
 	
@@ -15,6 +17,9 @@ package com.knomedia.commands
 		
 		[Inject]
 		public var sessionCollection:SessionCollection;
+		
+		[Dispatcher]
+		public var dispatcher:IEventDispatcher;
 		
 		private var _sessionData:Array;
 		
@@ -34,7 +39,8 @@ package com.knomedia.commands
 			sessionCollection.allSessions = _sessionData;
 			sessionCache.setAllSessions( _sessionData );
 			sessionCache.lastUpdated = new Date();
-			trace("UpdateSessionDataCommand... sessionCollection updated");
+			
+			dispatcher.dispatchEvent( new SessionCacheEvent( SessionCacheEvent.UPDATED ) );
 		}
 	}
 }

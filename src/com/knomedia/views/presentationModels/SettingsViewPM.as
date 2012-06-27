@@ -1,5 +1,6 @@
 package com.knomedia.views.presentationModels
 {
+	
 	import com.knomedia.cache.SessionCache;
 	import com.knomedia.cache.UserDataCache;
 	import com.knomedia.events.RegistrationServiceEvent;
@@ -19,7 +20,7 @@ package com.knomedia.views.presentationModels
 		[Inject]
 		public var userCache:UserDataCache;
 		
-		[Inject]
+		[Inject (bind="true")]
 		public var sessionCache:SessionCache;
 		
 		
@@ -46,11 +47,11 @@ package com.knomedia.views.presentationModels
 		{
 			if (date)
 			{
-				var fmtDate:String = "";
-				var sync:Number = date.getTime();
-				var now:Number = new Date().getTime();
-				
-				return (now - sync) + "";
+				var fmtDate:String = date.toString();
+				var array:Array = fmtDate.split(" ");
+				array = array.slice(0, array.length - 2);
+				fmtDate = array.join(" ");
+				return fmtDate;
 			}else {
 				return "Never";
 			}
@@ -72,6 +73,19 @@ package com.knomedia.views.presentationModels
 			{
 				writeLabels();
 			}
+		}
+		[EventHandler(event="SessionCacheEvent.UPDATED")]
+		public function onSessionDataUpdate():void
+		{
+			if ( registered && injected )
+			{
+				writeLabels();
+			}
+		}
+		
+		public function refreshData():void
+		{
+			dispatcher.dispatchEvent( new SettingsEvent( SettingsEvent.REFRESH ) );
 		}
 		
 		public function logOut():void
