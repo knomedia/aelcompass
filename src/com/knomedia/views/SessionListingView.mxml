@@ -24,6 +24,11 @@
 				navigator.pushView( SessionDetailView, session );
 			}
 			
+			
+			
+			
+			
+			
 		]]>
 	</fx:Script>
 	<s:navigationContent>
@@ -32,5 +37,10 @@
 	<s:List id="sessionList" width="90%" horizontalCenter="0"
 			height="90%" verticalCenter="0" 
 			labelField="name"
-			change="onSessionSelect(event)"/>
+			change="onSessionSelect(event)"
+			itemRenderer="com.knomedia.views.renderers.IconSessionRenderer"
+			>
+		
+		
+	</s:List>
 </s:View>
