@@ -22,19 +22,20 @@
 			
 		]]>
 	</fx:Script>
-	<s:layout>
-		<s:VerticalLayout paddingTop="35"
-						  paddingRight="15"
-						  paddingBottom="15"
-						  paddingLeft="15" />
-	</s:layout>
-	
-	<s:Label text="Last Synced: 12:06PM 7/28/2012" id="syncTF" width="100%" textAlign="center"/>
-			 
-	<s:Button width="100%" label="Refresh Data" icon="@Embed('styles/icons/30/icon_refresh.png')"
-			  click="pm.refreshData()"/>
-	
-	<s:Spacer height="100%" />
-	<s:Label text="Logged in as: Jason Madsen" id="userTF" width="100%" textAlign="center" />
-	<s:Button width="100%" label="Log Out" click="pm.logOut();" />
+	<s:VGroup width="100%" paddingTop="15"
+			  paddingRight="15"
+			  paddingBottom="15"
+			  paddingLeft="15"
+			  horizontalCenter="0"
+			  verticalCenter="0"
+			>
+		
+		<s:Label text="Logged in as: Jason Madsen" id="userTF" width="100%" textAlign="center" />
+		<s:Button width="100%" label="Log Out" click="pm.logOut();" />
+		<s:Spacer height="25" />
+		<s:Label text="Last Synced: 12:06PM 7/28/2012" id="syncTF" width="100%" textAlign="center"/>
+				 
+		<s:Button width="100%" label="Refresh Data" icon="@Embed('styles/icons/30/icon_refresh.png')"
+				  click="pm.refreshData()"/>
+	</s:VGroup>
 </s:View>
