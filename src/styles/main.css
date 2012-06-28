@@ -31,6 +31,12 @@ s|ActionBar s|Button {
 	fontWeight:normal;
 }
 
+s|TextArea
+{
+	contentBackgroundAlpha: 0;
+	skinClass:ClassReference("com.knomedia.skins.TextAreaSkin");
+}
+
 @media(os-platform: "IOS")
 {
 	s|ActionBar
