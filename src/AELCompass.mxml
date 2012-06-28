@@ -19,6 +19,8 @@
 		<config:SwizSetupInit id="swiz" />
 	</fx:Declarations>
 	
+	<fx:Style source="styles/main.css" />
+	
 	<fx:Script>
 		<![CDATA[
 			import com.knomedia.events.AppEvent;

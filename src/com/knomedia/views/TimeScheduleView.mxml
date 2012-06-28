@@ -36,8 +36,11 @@
 		]]>
 	</fx:Script>
 	<s:navigationContent>
-		<s:Button label="Days" click="navigator.popView()" />
+		<s:Button label="Days" click="navigator.popView()" styleName="backButton"
+				  />
 	</s:navigationContent>
+	
+	
 	
 		
 	

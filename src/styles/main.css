@@ -1,2 +1,43 @@
 /* CSS file */
 @namespace s "library://ns.adobe.com/flex/spark";
+
+global
+{
+	color: #444444;	
+}
+
+s|ActionBar
+{
+	chromeColor: #919191;
+	textShadowAlpha: .5;
+	textShadowColor: #A7B4A5;
+	paddingLeft: 4;
+	paddingRight: 4;
+	contentBackgroundColor: #FF0000;
+}
+s|ActionBar #titleDisplay{
+	fontWeight: normal;
+	color: #222222;
+	
+}
+
+s|TabbedViewNavigator #tabBar
+{
+	chromeColor: #919191;
+}
+
+s|ActionBar s|Button {
+	color: #222222;
+}
+
+@media(os-platform: "IOS")
+{
+	s|ActionBar
+	{
+		defaultButtonAppearance: beveled;
+	}
+	.backButton {
+		skinClass: ClassReference("spark.skins.mobile.BeveledBackButtonSkin")
+	}
+	
+}

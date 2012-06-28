@@ -27,13 +27,14 @@
 			private var _matrix:Matrix;
 			private var _topColor:uint = 0xFFFFFF;
 			private var _loColor:uint = 0xC6C6C1;
+			private var attending:Boolean = false;;
 			
 			override public function set data(value:Object):void
 			{
 				super.data = value;
-				var attending:Boolean = ( Session( value ).userAttending );
-				_topColor = (attending)? 0xE7F4DF : 0xFFFFFF;
-				_loColor = (attending)? 0xB4F28E : 0xC6C6C1;
+				attending = ( Session( value ).userAttending );
+				_topColor = (attending)? 0xE7F4DF : 0xF9F9F9;
+				_loColor = (attending)? 0xB4F28E : 0xEEEEEE;
 				
 			}
 			
@@ -50,11 +51,16 @@
 			override protected function drawBackground(unscaledWidth:Number, unscaledHeight:Number):void
 			{
 				graphics.clear();
+				if (attending)
+				{
+					graphics.lineStyle(1, 0x777777, 1, true);
+				}
 				_matrix = new Matrix();
 				_matrix.createGradientBox( unscaledWidth, unscaledHeight, 1.570796325, 0, 0 );
 				graphics.beginGradientFill( GradientType.LINEAR, [_topColor, _loColor], [1,1], [0, 255], _matrix );
-				graphics.drawRect( 0, 1, unscaledWidth, unscaledHeight -1  );
+				graphics.drawRect( 0, 1, unscaledWidth - 5, unscaledHeight -1  );
 				graphics.endFill();
+				
 				
 			}
 		]]>
