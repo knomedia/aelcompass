@@ -33,7 +33,7 @@
 			{
 				super.data = value;
 				attending = ( Session( value ).userAttending );
-				_topColor = (attending)? 0xBBEFA0 : 0xF9F9F9;
+				_topColor = (attending)? 0xE0EFD9 : 0xFFFFFF;
 				_loColor = (attending)? 0x73EF46 : 0xEEEEEE;
 				
 			}
@@ -59,7 +59,7 @@
 				}
 				_matrix = new Matrix();
 				_matrix.createGradientBox( unscaledWidth, unscaledHeight, 1.570796325, 0, 0 );
-				graphics.beginGradientFill( GradientType.LINEAR, [_topColor, _loColor], [1,1], [0, 255], _matrix );
+				graphics.beginGradientFill( GradientType.LINEAR, [_topColor, _loColor], [1,1], [0, 75], _matrix );
 				graphics.drawRect( 0, 1, unscaledWidth - 5, unscaledHeight -1  );
 				graphics.endFill();
 				
@@ -67,15 +67,6 @@
 			}
 		]]>
 	</fx:Script>
-	<!--<s:VGroup width="100%" height="100%" >
-		<s:Rect width="100%" height="100%">
-			<s:fill>
-				<s:LinearGradient rotation="90">
-					<s:GradientEntry color="0xF7F7F1" />
-					<s:GradientEntry color="0xC6C6C1" />
-				</s:LinearGradient>
-			</s:fill>
-		</s:Rect>
-	</s:VGroup>-->
+	
 		
 </s:IconItemRenderer>
