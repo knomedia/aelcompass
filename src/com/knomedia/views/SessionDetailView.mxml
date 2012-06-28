@@ -15,7 +15,7 @@
 			protected function onActive(event:ViewNavigatorEvent):void
 			{
 				_session = Session( data );
-				this.title = _session.day + ": " + _session.start;
+				this.title = _session.day + " - " + _session.start;
 				titleTF.text = _session.name;
 				//trace(_session.info);
 				StyleableTextField( infoTF.textDisplay ).htmlText = _session.info;
@@ -66,7 +66,8 @@
 				  />
 	</s:navigationContent>
 	
-	<s:TextArea width="100%" editable="false" borderVisible="false" id="titleTF" fontWeight="bold" />
+	<s:TextArea width="100%" editable="false" borderVisible="false" id="titleTF" fontWeight="bold"
+				/>
 	<s:Group width="100%" height="100%">
 		<s:Scroller top="5" bottom="5" left="5" right="5"
 					horizontalScrollPolicy="off"
@@ -81,7 +82,7 @@
 		</s:Scroller>
 		<s:Rect width="100%" height="100%" radiusX="5" radiusY="5" >
 			<s:stroke>
-				<s:SolidColorStroke color="0x979794" pixelHinting="true" />
+				<s:SolidColorStroke color="0xDDDDDD" pixelHinting="true" />
 			</s:stroke>
 		</s:Rect>
 	</s:Group>

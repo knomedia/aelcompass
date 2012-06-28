@@ -14,7 +14,7 @@
 			
 			public function onViewActivate():void
 			{
-				this.title = String(this.data.day) + "-" + String(this.data.start);
+				this.title = String(this.data.day) + " - " + String(this.data.start);
 				sessionList.dataProvider = sessionCollection.getSessionsForDayTime( this.data.day, this.data.start );
 			}
 			
