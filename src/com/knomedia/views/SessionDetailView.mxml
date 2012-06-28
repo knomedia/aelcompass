@@ -28,6 +28,24 @@
 				infoTF.height = infoLines;
 				//trace("height adjusted to: " + infoTF.height);
 				attendingCB.selected = _session.userAttending;
+				//countStatsTF.text = "Registered: " + _session.count + ", Capacity: " + _session.limit;
+				countTF.text = "Registered: " + _session.count;
+				limitTF.text = "Capacity: " + ( (_session.limit == 0)? "Unlimited" : _session.limit );
+				setupCB();
+			}
+			
+			private function setupCB():void
+			{
+				var lb:String = "";
+				if ( !_session.userAttending && (_session.limit <= _session.count) && _session.limit != 0	 )
+				{
+					lb = "Session is full";
+					attendingCB.enabled = false;
+				} else if ( _session.userAttending || _session.limit > _session.count || _session.limit == 0 ) {
+					lb = "Registered?";
+					attendingCB.enabled = true;
+				}
+				attendingCB.label = lb;
 			}
 			
 		]]>
@@ -44,10 +62,11 @@
 	</s:layout>
 	
 	<s:navigationContent>
-		<s:Button label="Sessions" click="navigator.popView()" />
+		<s:Button label="Sessions" click="navigator.popView()"
+				  />
 	</s:navigationContent>
 	
-	<s:TextArea width="100%" editable="false" borderVisible="false" id="titleTF" />
+	<s:TextArea width="100%" editable="false" borderVisible="false" id="titleTF" fontWeight="bold" />
 	<s:Group width="100%" height="100%">
 		<s:Scroller top="5" bottom="5" left="5" right="5"
 					horizontalScrollPolicy="off"
@@ -62,9 +81,26 @@
 		</s:Scroller>
 		<s:Rect width="100%" height="100%" radiusX="5" radiusY="5" >
 			<s:stroke>
-				<s:SolidColorStroke color="0xFF0000" pixelHinting="true" />
+				<s:SolidColorStroke color="0x979794" pixelHinting="true" />
 			</s:stroke>
 		</s:Rect>
 	</s:Group>
-	<s:CheckBox id="attendingCB" label="Attending" />
+	<s:HGroup verticalAlign="middle" width="100%" paddingTop="10"
+			  paddingRight="10"
+			  paddingBottom="10"
+			  paddingLeft="10">
+		<s:VGroup horizontalAlign="left" >
+			<s:Label id="countTF" fontSize="10" />
+			<s:Label id="limitTF" fontSize="10" />
+			
+		</s:VGroup>
+		<s:Spacer width="100%" />
+		<s:Label id="attendingTF" text="Attend?" />
+		<s:ToggleSwitch id="attendingCB"
+						skinClass="com.knomedia.skins.ToggleSwitchSkin"
+						/>
+		
+	</s:HGroup>
+	
+	<!--Add ability to switch attending session data by clicking the cb above-->
 </s:View>
