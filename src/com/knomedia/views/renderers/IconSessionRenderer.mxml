@@ -33,8 +33,8 @@
 			{
 				super.data = value;
 				attending = ( Session( value ).userAttending );
-				_topColor = (attending)? 0xE7F4DF : 0xF9F9F9;
-				_loColor = (attending)? 0xB4F28E : 0xEEEEEE;
+				_topColor = (attending)? 0xBBEFA0 : 0xF9F9F9;
+				_loColor = (attending)? 0x73EF46 : 0xEEEEEE;
 				
 			}
 			
@@ -53,7 +53,9 @@
 				graphics.clear();
 				if (attending)
 				{
-					graphics.lineStyle(1, 0x777777, 1, true);
+					graphics.lineStyle(1, 0xBBBBBB, 1, false);
+				} else {
+					graphics.lineStyle(1, 0xEEEEEE, 1, false);
 				}
 				_matrix = new Matrix();
 				_matrix.createGradientBox( unscaledWidth, unscaledHeight, 1.570796325, 0, 0 );

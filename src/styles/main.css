@@ -8,8 +8,8 @@ global
 
 s|ActionBar
 {
-	chromeColor: #919191;
-	textShadowAlpha: .5;
+	chromeColor: #818181;
+	textShadowAlpha: 0;
 	textShadowColor: #A7B4A5;
 	paddingLeft: 4;
 	paddingRight: 4;
@@ -17,17 +17,18 @@ s|ActionBar
 }
 s|ActionBar #titleDisplay{
 	fontWeight: normal;
-	color: #222222;
+	color: #FFFFFF;
 	
 }
 
 s|TabbedViewNavigator #tabBar
 {
-	chromeColor: #919191;
+	chromeColor: #818181;
 }
 
 s|ActionBar s|Button {
-	color: #222222;
+	color: #FFFFFF;
+	fontWeight:normal;
 }
 
 @media(os-platform: "IOS")
