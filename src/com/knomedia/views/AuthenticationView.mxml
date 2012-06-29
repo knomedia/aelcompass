@@ -2,7 +2,7 @@
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		xmlns:s="library://ns.adobe.com/flex/spark" title="Registration ID"
 		actionBarVisible="false"
-		viewActivate="pm.onActivate( errorTF, registrationTF )"
+		viewActivate="pm.onActivate( errorTF, registrationTF, busyIndicator )"
 		viewDeactivate="pm.onDeactivate()">
 	
 	<fx:Script>
@@ -28,9 +28,12 @@
 	<s:VGroup height="100%" width="100%" verticalAlign="middle">
 		
 		<s:Label id="errorTF" color="0xFF0000" text="" />
-		<s:TextInput id="registrationTF" width="100%" prompt="Registration ID" height="45"
-					 enter="pm.onSubmit( registrationTF.text )"
-					 returnKeyLabel="done"/>
+		<s:Group width="100%">
+			<s:TextInput id="registrationTF" width="100%" prompt="Registration ID" height="45"
+						 enter="pm.onSubmit( registrationTF.text )"
+						 returnKeyLabel="done"/>
+			<s:BusyIndicator visible="false" right="5" verticalCenter="0" id="busyIndicator" />
+		</s:Group>
 		<s:Button width="100%"
 				  label="Submit"
 				  click="pm.onSubmit( registrationTF.text )"/>

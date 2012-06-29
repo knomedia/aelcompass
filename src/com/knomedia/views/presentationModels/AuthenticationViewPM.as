@@ -10,6 +10,7 @@ package com.knomedia.views.presentationModels
 	import flash.net.navigateToURL;
 	import flash.ui.Keyboard;
 	
+	import spark.components.BusyIndicator;
 	import spark.components.Label;
 	import spark.components.TextInput;
 	
@@ -22,6 +23,7 @@ package com.knomedia.views.presentationModels
 		
 		private var _errorLabel:Label;
 		private var _registrationTF:TextInput;
+			private var _busyIndicator:BusyIndicator;
 			
 		public function AuthenticationViewPM(target:IEventDispatcher=null)
 		{
@@ -34,16 +36,18 @@ package com.knomedia.views.presentationModels
 			navigateToURL( new URLRequest( REG_URL ) );		
 		}
 		
-		public function onActivate( errorLabel:Label, registrationTF:TextInput ):void
+		public function onActivate( errorLabel:Label, registrationTF:TextInput, busyIndicator:BusyIndicator ):void
 		{
 			_errorLabel = errorLabel;
 			_registrationTF = registrationTF;
+			_busyIndicator = busyIndicator;
 			NativeApplication.nativeApplication.addEventListener( KeyboardEvent.KEY_DOWN, onKeyDown);
 		}
 		
 		public function onDeactivate():void
 		{
 			_errorLabel.text = "";
+			_busyIndicator.visible = false;
 			NativeApplication.nativeApplication.removeEventListener( KeyboardEvent.KEY_DOWN, onKeyDown);
 		}
 		
@@ -59,6 +63,7 @@ package com.knomedia.views.presentationModels
 		{
 			_errorLabel.text = "";
 			_registrationTF.text = "";
+			_busyIndicator.visible = true;
 			dispatcher.dispatchEvent( new AppEvent( AppEvent.REQUEST_AUTH, registrationId ) );
 		}
 		
@@ -66,6 +71,7 @@ package com.knomedia.views.presentationModels
 		public function showFailedAttempt():void
 		{
 			_errorLabel.text = "Doooh... Registration ID not found";
+			_busyIndicator.visible = false;
 			
 		}
 	}
