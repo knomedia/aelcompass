@@ -1,6 +1,7 @@
 package com.knomedia.views.presentationModels
 {
 	import com.knomedia.events.AppEvent;
+	import com.knomedia.models.NavModel;
 	import com.knomedia.views.AuthenticationView;
 	
 	import flash.events.Event;
@@ -27,6 +28,9 @@ package com.knomedia.views.presentationModels
 		[Dispatcher]
 		public var dispatcher:IEventDispatcher;
 		
+		[Inject]
+		public var navModel:NavModel;
+		
 		private var _appNav:TabbedViewNavigator;
 		private var _pushedViewNav:ViewNavigator;
 		
@@ -45,6 +49,7 @@ package com.knomedia.views.presentationModels
 		public function register( viewNavigator:TabbedViewNavigator ):void
 		{
 			_appNav = viewNavigator;
+			navModel.navigator = _appNav;
 			dispatcher.dispatchEvent( new AppEvent( AppEvent.INIT ) );
 		}
 		

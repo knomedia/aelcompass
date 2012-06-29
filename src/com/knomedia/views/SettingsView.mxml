@@ -23,7 +23,8 @@
 		]]>
 	</fx:Script>
 	<s:actionContent>
-		<s:BusyIndicator id="bi" visible="false" />
+		<s:BusyIndicator id="bi" visible="false"
+						 symbolColor="#FFFFFF"/>
 	</s:actionContent>
 	<s:VGroup width="100%" paddingTop="15"
 			  paddingRight="15"

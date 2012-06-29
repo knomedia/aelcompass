@@ -23,8 +23,8 @@ package com.knomedia.commands
 			mapCommand( AppEvent.OKAY_TO_LOAD, LoadInitialDataCommand, AppEvent, false );
 			mapCommand( AppEvent.REQUEST_AUTH, RequestAuthenticationCommand, AppEvent, false );
 			mapCommand( RegistrationServiceEvent.AUTHENTICATION_COMPLETE, SaveUserDataCommand, RegistrationServiceEvent, false );
-			
 			mapCommand( RegistrationServiceEvent.ALL_SESSIONS_LOADED, UpdateSessionDataCommand, RegistrationServiceEvent, false );
+			mapCommand( RegistrationServiceEvent.SERVICE_ERROR, NotifyServiceErrorCommand, RegistrationServiceEvent, false );
 			
 			mapCommand( SettingsEvent.LOGOUT, RemoveUserDataCommand, SettingsEvent, false );
 			mapCommand( SettingsEvent.REFRESH, RefreshDataCommand, SettingsEvent, false );

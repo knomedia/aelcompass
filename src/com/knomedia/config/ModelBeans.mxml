@@ -6,6 +6,7 @@
 	<models:SessionCollection id="sessions" />
 	
 	<cache:UserDataCache id="userCache" />
+	<models:NavModel id="navModel" />
 	
 	
 	<!-- Presentation Models -->

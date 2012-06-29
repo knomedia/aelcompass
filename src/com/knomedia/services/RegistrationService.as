@@ -25,10 +25,12 @@ package com.knomedia.services
 		{
 		 	super(target);
 			_srv = new HTTPService();
-			_srv.showBusyCursor = true;
+			_srv.requestTimeout = 0.1;
+			//_srv.showBusyCursor = true;
 			_srv.url = ServiceParams.SERVICE_GATEWAY;
 			_srv.resultFormat = "text";
 			_srv.addEventListener(  FaultEvent.FAULT, onFault);
+			
 		}
 
 		
@@ -37,7 +39,8 @@ package com.knomedia.services
 		// ----------------------------------------------------------
 		private function onFault(event:FaultEvent):void
 		{
-			dispatcher.dispatchEvent( new RegistrationServiceEvent( RegistrationServiceEvent.SERVICE_ERROR, null, null ));
+			trace("service fault");
+			dispatcher.dispatchEvent( new RegistrationServiceEvent( RegistrationServiceEvent.SERVICE_ERROR, null, event.message ));
 		}
 		
 		
