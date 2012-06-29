@@ -28,7 +28,9 @@
 	<s:VGroup height="100%" width="100%" verticalAlign="middle">
 		
 		<s:Label id="errorTF" color="0xFF0000" text="" />
-		<s:TextInput id="registrationTF" width="100%" prompt="Registration ID" height="45" />
+		<s:TextInput id="registrationTF" width="100%" prompt="Registration ID" height="45"
+					 enter="pm.onSubmit( registrationTF.text )"
+					 returnKeyLabel="done"/>
 		<s:Button width="100%"
 				  label="Submit"
 				  click="pm.onSubmit( registrationTF.text )"/>
