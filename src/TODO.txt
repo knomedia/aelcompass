@@ -1,0 +1,22 @@
+Add busy cursor during all network calls
+
+Add error messaging when / if network call fails or times out
+
+Build / Add Splash Screen
+
+Build / Add Icon
+
+News Section
+	Build server-side and service
+	Build out View and Caching
+	
+	
+
+Caching / Collections
+	Dispatch events when collections and caches are updated
+		Be sure to update views where necessary
+		
+
+
+Android
+	Icons seems jacked up. Imagine this has to do with scaling issues
