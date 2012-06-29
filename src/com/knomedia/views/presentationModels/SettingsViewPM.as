@@ -9,6 +9,7 @@ package com.knomedia.views.presentationModels
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
 	
+	import spark.components.BusyIndicator;
 	import spark.components.Label;
 	
 	public class SettingsViewPM extends EventDispatcher
@@ -28,6 +29,7 @@ package com.knomedia.views.presentationModels
 		private var _syncTF:Label;
 		private var registered:Boolean = false;
 		private var injected:Boolean = false;
+		private var _bi:BusyIndicator;
 		
 		public function SettingsViewPM(target:IEventDispatcher=null)
 		{
@@ -64,10 +66,11 @@ package com.knomedia.views.presentationModels
 			_userTF.text = "Logged in as: " + userCache.userData.first_name + " " +userCache.userData.last_name;
 		}
 		
-		public function register( syncTF:Label, userTF:Label ):void
+		public function register( syncTF:Label, userTF:Label, bi:BusyIndicator ):void
 		{
 			_syncTF = syncTF;
 			_userTF = userTF;
+			_bi = bi;
 			registered = true;
 			if (injected)
 			{
@@ -81,10 +84,15 @@ package com.knomedia.views.presentationModels
 			{
 				writeLabels();
 			}
+			if (_bi)
+			{
+				_bi.visible = false;
+			}
 		}
 		
 		public function refreshData():void
 		{
+			_bi.visible = true;
 			dispatcher.dispatchEvent( new SettingsEvent( SettingsEvent.REFRESH ) );
 		}
 		

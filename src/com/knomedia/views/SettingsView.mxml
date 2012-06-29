@@ -17,11 +17,14 @@
 			
 			protected function onActivate(event:ViewNavigatorEvent):void
 			{
-				pm.register( syncTF, userTF );			
+				pm.register( syncTF, userTF, bi );			
 			}
 			
 		]]>
 	</fx:Script>
+	<s:actionContent>
+		<s:BusyIndicator id="bi" visible="false" />
+	</s:actionContent>
 	<s:VGroup width="100%" paddingTop="15"
 			  paddingRight="15"
 			  paddingBottom="15"
