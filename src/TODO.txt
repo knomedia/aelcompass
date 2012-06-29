@@ -1,22 +1,32 @@
-Add busy cursor during all network calls
+Bugs
 
-Add error messaging when / if network call fails or times out
-
-Build / Add Splash Screen
-
-Build / Add Icon
-
-News Section
-	Build server-side and service
-	Build out View and Caching
-	
 	
 
-Caching / Collections
+Must Have
+	Build / Add Splash Screen
+	Build / Add Icon
+	
+	Ability to change your room selection
+	
+	Caching / Collections
 	Dispatch events when collections and caches are updated
 		Be sure to update views where necessary
+	
+	Android
+		Icons seems jacked up. Imagine this has to do with scaling issues
+
+Secondary Features
+	News Section
+		Build server-side and service
+		Build out View and Caching
+	
+	
+
+
+DONE -- TabBar doesn't go away when on app (consider longer delay)
+DONE -- Add busy cursor during auth network calls
+DONE -- Add error messaging when / if network call fails or times out
 		
 
 
-Android
-	Icons seems jacked up. Imagine this has to do with scaling issues
+

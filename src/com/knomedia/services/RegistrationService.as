@@ -25,7 +25,7 @@ package com.knomedia.services
 		{
 		 	super(target);
 			_srv = new HTTPService();
-			_srv.requestTimeout = 0.1;
+			_srv.requestTimeout = 5;
 			//_srv.showBusyCursor = true;
 			_srv.url = ServiceParams.SERVICE_GATEWAY;
 			_srv.resultFormat = "text";
