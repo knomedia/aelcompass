@@ -3,14 +3,20 @@ package com.knomedia.views.presentationModels
 	import com.knomedia.events.AppEvent;
 	import com.knomedia.views.AuthenticationView;
 	
+	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
+	import flash.utils.setInterval;
+	
+	import mx.events.EffectEvent;
+	import mx.events.FlexEvent;
 	
 	import spark.components.TabbedViewNavigator;
 	import spark.components.View;
 	import spark.components.ViewNavigator;
+	import spark.events.ViewNavigatorEvent;
 	import spark.transitions.SlideViewTransition;
 	import spark.transitions.ViewTransitionBase;
 	import spark.transitions.ViewTransitionDirection;
@@ -54,6 +60,7 @@ package com.knomedia.views.presentationModels
 				_transition = new SlideViewTransition();
 				_transition.duration = 300;
 			}
+			_transition.addEventListener(FlexEvent.TRANSITION_END, onEffectEnd );
 			_transition.direction = ( intro )? ViewTransitionDirection.RIGHT : ViewTransitionDirection.LEFT;
 			return _transition
 		}
@@ -62,7 +69,7 @@ package com.knomedia.views.presentationModels
 		{
 			if (!_timer)
 			{
-				_timer = new Timer( 600, 1 );
+				_timer = new Timer( 50, 1 );
 			}
 			return _timer;
 		}
@@ -70,14 +77,34 @@ package com.knomedia.views.presentationModels
 		[EventHandler(event="AppEvent.AUTH_NEEDED")]
 		public function showLogin():void
 		{
-
-			var tm:Timer = getTimer();
-			tm.addEventListener(TimerEvent.TIMER_COMPLETE, delayedLoginPush );
-			tm.start();
 			_pushedViewNav = getSelectedNav();
 			_pushedViewNav.pushView( AuthenticationView, null, null, getTransition() );
 			inAuthentication = true;
 			_appNav.enabled = false;
+		}
+		
+		[EventHandler(event="RegistrationServiceEvent.AUTHENTICATION_COMPLETE")]
+		public function hideLogin():void
+		{
+			inAuthentication = false;
+			if (_pushedViewNav )
+			{
+				_pushedViewNav.popToFirstView( getTransition( false )  );
+			}
+			
+		}
+
+		private function onEffectEnd(event:FlexEvent):void
+		{
+			var tm:Timer = getTimer();
+			if ( inAuthentication )
+			{
+				tm.addEventListener(TimerEvent.TIMER_COMPLETE, delayedLoginPush );
+			} else {
+				tm.addEventListener(TimerEvent.TIMER_COMPLETE, delayedLoginHide );
+			}
+			tm.start();
+			
 		}
 		private function delayedLoginPush( event:TimerEvent ):void
 		{
@@ -92,19 +119,7 @@ package com.knomedia.views.presentationModels
 			var tm:Timer = Timer(event.target);
 			tm.removeEventListener(TimerEvent.TIMER_COMPLETE, delayedLoginPush );
 		}
-		[EventHandler(event="RegistrationServiceEvent.AUTHENTICATION_COMPLETE")]
-		public function hideLogin():void
-		{
-			var tm:Timer = getTimer();
-			tm.addEventListener(TimerEvent.TIMER_COMPLETE, delayedLoginHide );
-			tm.start();
-			inAuthentication = false;
-			if (_pushedViewNav )
-			{
-				_pushedViewNav.popToFirstView( getTransition( false )  );
-			}
-			
-		}
+		
 		
 		
 	}
