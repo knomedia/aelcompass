@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SplashScreenImage xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					 xmlns:s="library://ns.adobe.com/flex/spark">
+	
+	<s:SplashScreenImageSource aspectRatio="portrait" dpi="320" source="@Embed(source='styles/splash/port_320.png')" />
+	<s:SplashScreenImageSource aspectRatio="portrait" dpi="240" source="@Embed(source='styles/splash/port_240.png')" />
+	<s:SplashScreenImageSource aspectRatio="portrait" dpi="160" source="@Embed(source='styles/splash/port_160.png')"/>
+	
+	
+	<s:SplashScreenImageSource aspectRatio="landscape" dpi="320" source="@Embed(source='styles/splash/land_320.png')" />
+	<s:SplashScreenImageSource aspectRatio="landscape" dpi="240" source="@Embed(source='styles/splash/land_240.png')" />
+	<s:SplashScreenImageSource aspectRatio="landscape" dpi="160" source="@Embed(source='styles/splash/land_160.png')"/>
+	
+	<!--TABLETS-->
+	<s:SplashScreenImageSource aspectRatio="portrait" dpi="160" source="@Embed(source='styles/splash/port_160_tab.png')" minResolution="700" />
+</s:SplashScreenImage>

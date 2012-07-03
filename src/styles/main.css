@@ -6,6 +6,20 @@ global
 	color: #444444;	
 }
 
+s|TabbedViewNavigatorApplication
+{
+	backgroundColor: #EEEEEE;
+}
+s|View
+{
+		
+}
+
+s|List
+{
+	contentBackgroundAlpha: 0;
+}
+
 s|ActionBar
 {
 	chromeColor: #818181;

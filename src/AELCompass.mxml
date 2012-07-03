@@ -2,17 +2,12 @@
 <s:TabbedViewNavigatorApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
 								  xmlns:s="library://ns.adobe.com/flex/spark" applicationDPI="160"
 								  xmlns:config="com.knomedia.config.*"
-								  
+								  splashScreenImage="com.knomedia.views.AppSplash"
 								  applicationComplete="onAppLoaded()">
 	<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.HomeView"
 					 icon="{homeIcons}"/>
 	<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.ScheduleView"
 					 icon="{calendarIcons}"/>
-	<!--<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.TwitterView"
-					 icon="@Embed('styles/icons/16/comment.png')"/>-->
-	<!--<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.SearchView"
-					 icon="@Embed('styles/icons/16/search.png')"/>-->
-
 	<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.SettingsView"
 					 icon="{manageIcons}"  />
 	<fx:Declarations>
