@@ -1,19 +1,19 @@
 Bugs
 
-	
 
 Must Have
-	Build / Add Splash Screen
-	Build / Add Icon
 	
-	Ability to change your room selection
+	
+	
+	
+	Ability to change your session selection
 	
 	Caching / Collections
 	Dispatch events when collections and caches are updated
 		Be sure to update views where necessary
 	
 	Android
-		Icons seems jacked up. Imagine this has to do with scaling issues
+		
 
 Secondary Features
 	News Section
@@ -26,7 +26,11 @@ Secondary Features
 DONE -- TabBar doesn't go away when on app (consider longer delay)
 DONE -- Add busy cursor during auth network calls
 DONE -- Add error messaging when / if network call fails or times out
-		
+DONE -- Fix Icon Pixelation on HighRes Devices		
+DONE -- Build / Add Splash Screen
+DONE -- Build / Add Icon
+
+FIXED -- Icons seems jacked up. Imagine this has to do with scaling issues
 
 
 
