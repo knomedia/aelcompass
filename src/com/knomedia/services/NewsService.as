@@ -1,5 +1,7 @@
 package com.knomedia.services
 {
+	import com.knomedia.models.NewsModel;
+	
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
 	
@@ -12,6 +14,9 @@ package com.knomedia.services
 	{
 		private var _srv:HTTPService;
 		private const GATEWAY:String = "http://localhost/aelcompass/news";
+		
+		[Dispatcher]
+		public var dispatcher:IEventDispatcher;
 		
 		public function NewsService(target:IEventDispatcher=null)
 		{
@@ -31,8 +36,19 @@ package com.knomedia.services
 
 		private function onResult(event:ResultEvent):void
 		{
-			trace("new is back: " + event.result );
+			var results:Array = [];
 			var newsItems:Object = JSON.parse( event.result as String );
+			if ( newsItems is Array )
+			{
+				for each(var item:Object in newsItems)
+				{
+					results.push( NewsModel.createFromObject( item ) );
+				}
+			}else {
+				results.push( NewsModel.createFromObject( newsItems ) );
+			}
+			
+			dispatcher.dispatchEvent( new NewsServiceEvent( NewsServiceEvent.LOADED, results ) );
 		}
 		
 		public function getNewsFromDate( date:Date ):void

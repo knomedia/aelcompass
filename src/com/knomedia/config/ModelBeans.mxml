@@ -4,7 +4,7 @@
 
 	<cache:SessionCache id="sessionCache" />
 	<models:SessionCollection id="sessions" />
-	
+	<cache:NewsCache id="newsCache" />
 	<cache:UserDataCache id="userCache" />
 	<models:NavModel id="navModel" />
 	

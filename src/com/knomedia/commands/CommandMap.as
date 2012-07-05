@@ -3,6 +3,8 @@ package com.knomedia.commands
 	import com.knomedia.events.AppEvent;
 	import com.knomedia.events.RegistrationServiceEvent;
 	import com.knomedia.events.SettingsEvent;
+	import com.knomedia.services.NewsService;
+	import com.knomedia.services.NewsServiceEvent;
 	
 	import mx.events.Request;
 	
@@ -28,6 +30,8 @@ package com.knomedia.commands
 			
 			mapCommand( SettingsEvent.LOGOUT, RemoveUserDataCommand, SettingsEvent, false );
 			mapCommand( SettingsEvent.REFRESH, RefreshDataCommand, SettingsEvent, false );
+			
+			mapCommand( NewsServiceEvent.LOADED, UpdateNewsCommand, NewsServiceEvent, false );
 		}
 	}
 }
