@@ -37,6 +37,7 @@
 	<fx:Script>
 		<![CDATA[
 			import com.knomedia.events.AppEvent;
+			import com.knomedia.services.NewsService;
 			import com.knomedia.views.AuthenticationView;
 			import com.knomedia.views.presentationModels.AELCompassPM;
 			
@@ -45,10 +46,15 @@
 			[Inject]
 			public var pm:AELCompassPM;
 			
+			[Inject]
+			public var ns:NewsService;
+			
 			private function onAppLoaded():void
 			{
 				var tn:TabbedViewNavigator = TabbedViewNavigator( this.tabbedNavigator ); 
 				pm.register( tn );
+				
+				ns.getNewsFromDate( new Date( 0 ) );	
 				
 			}
 			

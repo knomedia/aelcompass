@@ -3,6 +3,7 @@
 				   xmlns:swiz="http://swiz.swizframework.org" xmlns:services="com.knomedia.services.*" xmlns:cache="com.knomedia.cache.*">
 
 	<services:RegistrationService id="regService" />
+	<services:NewsService id="newsService" />
 	
 	<swiz:SharedObjectBean id="soBean" />
 	
