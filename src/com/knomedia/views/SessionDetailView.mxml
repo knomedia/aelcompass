@@ -4,6 +4,7 @@
 		viewActivate="onActive(event)">
 	<fx:Script>
 		<![CDATA[
+			import com.knomedia.events.SessionRequestEvent;
 			import com.knomedia.models.Session;
 			
 			import spark.components.supportClasses.StyleableStageText;
@@ -11,6 +12,9 @@
 			import spark.events.ViewNavigatorEvent;
 			
 			private var _session:Session;
+			
+			[Dispatcher]
+			public var dispatcher:IEventDispatcher;
 			
 			protected function onActive(event:ViewNavigatorEvent):void
 			{
@@ -46,6 +50,21 @@
 					attendingCB.enabled = true;
 				}
 				attendingCB.label = lb;
+			}
+			
+			private function sessionAttendingChange():void
+			{
+				if ( attendingCB.selected != _session.userAttending )
+				{
+					var evt:SessionRequestEvent;
+					if (attendingCB.selected)
+					{
+						evt = new SessionRequestEvent(SessionRequestEvent.ADD, _session);						
+					} else {
+						evt = new SessionRequestEvent(SessionRequestEvent.REMOVE, _session);
+					}
+					dispatcher.dispatchEvent( evt );					
+				}
 			}
 			
 			
@@ -101,7 +120,7 @@
 		<s:Label id="attendingTF" text="Attend?" />
 		<s:ToggleSwitch id="attendingCB"
 						skinClass="com.knomedia.skins.ToggleSwitchSkin"
-						/>
+						change="sessionAttendingChange()"/>
 		
 	</s:HGroup>
 	

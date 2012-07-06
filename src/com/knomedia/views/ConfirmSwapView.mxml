@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="Swap Sessions"
+		viewActivate="onActivate()">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import com.knomedia.models.NavModel;
+			
+			[Inject]
+			public var navModel:NavModel
+			
+			
+			private function onActivate():void
+			{
+				addSessionTF.text = data.add.name;
+				removeSessionTF.text = data.remove.name;
+				
+				navModel.hide();
+			}
+			
+			private function doCancel():void
+			{
+				navigator.popView();
+				navModel.show();
+			}
+			private function doProceed():void
+			{
+				bi.visible = true;
+				scroller.visible = true;
+				scroller.includeInLayout = true;
+				error.visible = false;
+				error.includeInLayout = false;
+				
+				// ask service to process request
+			}
+			
+			public function onSwapComplete():void
+			{
+				bi.visible = false;
+				doCancel();
+			}
+			public function onSwapError():void
+			{
+				bi.visible = false;
+				scroller.visible = false;
+				scroller.includeInLayout = false;
+				
+				error.visible = true;
+				error.includeInLayout = true;
+			}
+		]]>
+	</fx:Script>
+	<s:Scroller width="90%" height="90%"
+				horizontalCenter="0"
+				verticalCenter="0"
+				id="scroller">
+		
+	<s:VGroup horizontalCenter="0"
+			  verticalCenter="0"
+			  width="100%"
+			  gap="5">
+		
+		<s:Label text="You are about to register for:" />
+		<s:TextArea id="addSessionTF" width="100%" borderVisible="true" editable="false"
+					contentBackgroundAlpha="0" 
+					paddingTop="15"
+					paddingRight="15"
+					paddingBottom="15"
+					paddingLeft="15"
+					fontSize="12"/>
+		<s:Spacer height="10" />
+		<s:Label text="Doing so will remove you from:" />
+		<s:TextArea id="removeSessionTF" width="100%" borderVisible="true" editable="false" contentBackgroundAlpha="0"
+					paddingTop="15"
+					paddingRight="15"
+					paddingBottom="15"
+					paddingLeft="15"
+					fontSize="12"/>
+		<s:Spacer height="10" />
+		<s:Button label="Proceed" width="100%" chromeColor="0x33D03D"
+				  click="doProceed()"/>
+		<s:Button label="Cancel" width="100%" chromeColor="0xE7290F" color="0xFFFFFF"
+				  click="doCancel()"/>
+	</s:VGroup>
+	</s:Scroller>
+
+	<s:VGroup width="90%" height="90%"
+			  horizontalCenter="0"
+			  verticalCenter="0"
+			  id="error"
+			  includeInLayout="false"
+			  visible="false">
+		
+		<s:TextArea id="errorTF" width="100%" height="100%"
+					editable="false" contentBackgroundAlpha="0"
+					borderVisible="false"
+					textAlign="center"
+					text="It appears there was an error communicating with the server. Your registration has not been changed."/>
+		<s:Button width="100%" label="Try Again" chromeColor="0x33D03D"
+				  click="doProceed()"/>
+		<s:Button width="100%" label="Cancel" chromeColor="0xE7290F" color="0xFFFFFF"
+				  click="doCancel()"/>
+	</s:VGroup>
+	<s:actionContent>
+		<s:BusyIndicator id="bi" visible="false" 
+						 symbolColor="#FFFFFF"/>
+	</s:actionContent>
+	
+ </s:View>

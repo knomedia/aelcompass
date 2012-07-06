@@ -14,5 +14,20 @@ package com.knomedia.models
 		{
 			super(target);
 		}
+		
+		public function hide():void
+		{
+			if ( navigator )
+			{
+				navigator.hideTabBar( false );
+			}
+		}
+		
+		public function show():void
+		{
+			if ( navigator ) {
+				navigator.showTabBar( false );
+			}
+		}
 	}
 }

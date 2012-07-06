@@ -3,6 +3,8 @@ package com.knomedia.commands
 	import com.knomedia.events.AppEvent;
 	import com.knomedia.events.CacheEvent;
 	import com.knomedia.events.RegistrationServiceEvent;
+	import com.knomedia.events.SessionRequestEvent;
+	import com.knomedia.events.SessionSwapEvent;
 	import com.knomedia.events.SettingsEvent;
 	import com.knomedia.services.NewsService;
 	import com.knomedia.services.NewsServiceEvent;
@@ -34,6 +36,10 @@ package com.knomedia.commands
 			mapCommand( SettingsEvent.REFRESH, RefreshDataCommand, SettingsEvent, false );
 			
 			mapCommand( NewsServiceEvent.LOADED, UpdateNewsCommand, NewsServiceEvent, false );
+			mapCommand( SessionRequestEvent.ADD, AddSessionRequestCommand, SessionRequestEvent, false );
+			mapCommand( SessionRequestEvent.REMOVE, RemoveSessionRequestCommand, SessionRequestEvent, false );
+			
+			mapCommand( SessionSwapEvent.SWAP_SESSIONS, ConfirmSessionSwapCommand, SessionSwapEvent, false );
 			
 			
 		}
