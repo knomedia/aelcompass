@@ -4,13 +4,11 @@ Bugs
 Must Have
 	
 	
-	
+	Move News service from localhost
 	
 	Ability to change your session selection
 	
-	Caching / Collections
-	Dispatch events when collections and caches are updated
-		Be sure to update views where necessary
+	Make Network Error View go full screen and disable tab buttons
 	
 	Android
 		
@@ -33,6 +31,10 @@ DONE -- Secondary Features
 	DONE -- News Section
 		DONE -- Build server-side and service
 		DONE -- Build out View and Caching
+		
+DONE -- Caching / Collections
+	Dispatch events when collections and caches are updated
+		Be sure to update views where necessary
 
 
 
