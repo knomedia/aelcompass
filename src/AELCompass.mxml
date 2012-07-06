@@ -4,12 +4,14 @@
 								  xmlns:config="com.knomedia.config.*"
 								  splashScreenImage="com.knomedia.views.AppSplash"
 								  applicationComplete="onAppLoaded()">
-	<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.HomeView"
-					 icon="{homeIcons}"/>
-	<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.ScheduleView"
-					 icon="{calendarIcons}"/>
-	<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.SettingsView"
-					 icon="{manageIcons}"  />
+	<s:navigators>
+		<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.HomeView"
+						 icon="{homeIcons}"/>
+		<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.ScheduleView"
+						 icon="{calendarIcons}"/>
+		<s:ViewNavigator label="" width="100%" height="100%" firstView="com.knomedia.views.SettingsView"
+						 icon="{manageIcons}"  />
+	</s:navigators>
 	<fx:Declarations>
 		<config:SwizSetupInit id="swiz" />
 		
@@ -64,4 +66,5 @@
 			
 		]]>
 	</fx:Script>
+	
 </s:TabbedViewNavigatorApplication>
