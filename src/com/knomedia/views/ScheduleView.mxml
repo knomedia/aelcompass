@@ -23,6 +23,14 @@
 				navigator.pushView( TimeScheduleView, sessionList.selectedItem );
 			}
 			
+			[EventHandler(event="SessionCacheEvent.UPDATED")]
+			public function onSessionsUpdate():void
+			{
+				sessionList.dataProvider = sessCollection.uniqueDays;
+			}
+			
+			
+			
 		]]>
 	</fx:Script>
 	<s:Group width="100%" height="100%"

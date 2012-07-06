@@ -24,9 +24,11 @@
 				navigator.pushView( SessionDetailView, session );
 			}
 			
-			
-			
-			
+			[EventHandler(event="SessionCacheEvent.UPDATED")]
+			public function onSessionsUpdate():void
+			{
+				onViewActivate();
+			}
 			
 			
 		]]>

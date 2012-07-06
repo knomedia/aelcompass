@@ -1,5 +1,7 @@
 package com.knomedia.models
 {
+	import com.knomedia.events.SessionCacheEvent;
+	
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
 	import flash.utils.Dictionary;
@@ -97,6 +99,7 @@ package com.knomedia.models
 			//determine if data is different before spending time processing
 			_allSessions = value;
 			calculateUniqueDays();
+			dispatcher.dispatchEvent( new SessionCacheEvent( SessionCacheEvent.UPDATED ) );
 		}
 		
 		private function calculateUniqueDays( ):void

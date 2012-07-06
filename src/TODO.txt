@@ -15,10 +15,7 @@ Must Have
 	Android
 		
 
-Secondary Features
-	News Section
-		Build server-side and service
-		Build out View and Caching
+
 	
 	
 
@@ -31,6 +28,11 @@ DONE -- Build / Add Splash Screen
 DONE -- Build / Add Icon
 
 FIXED -- Icons seems jacked up. Imagine this has to do with scaling issues
+
+DONE -- Secondary Features
+	DONE -- News Section
+		DONE -- Build server-side and service
+		DONE -- Build out View and Caching
 
 
 

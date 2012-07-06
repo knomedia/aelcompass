@@ -35,7 +35,6 @@ package com.knomedia.commands
 			
 			//Load all cached values
 			sessionCollection.allSessions = sessionCache.getAllSessions();
-			
 			dispatcher.dispatchEvent( new SettingsEvent( SettingsEvent.REFRESH ) );			
 			
 

@@ -33,6 +33,12 @@
 				
 			}
 			
+			[EventHandler(event="SessionCacheEvent.UPDATED")]
+			public function onSessionsUpdate():void
+			{
+				onViewActivate( null );
+			}
+			
 		]]>
 	</fx:Script>
 	<s:navigationContent>
