@@ -1,10 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		xmlns:s="library://ns.adobe.com/flex/spark" title="News"
+		viewActivate="updateDP()"
 		>
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
-	<s:List width="90%" horizontalCenter="0" height="100%">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.knomedia.cache.NewsCache;
+			
+			import mx.collections.ArrayCollection;
+			
+			[Inject]
+			public var newsCache:NewsCache;
+			
+			[PostConstruct]
+			public function onConstruct():void
+			{
+				updateDP();
+			}
+			
+			[EventHandler(event="CacheEvent.NEWS_UPDATED")]
+			public function onNewsUpdate():void
+			{
+				trace("seeing news update");
+				updateDP();
+			}
+			
+			private function updateDP():void
+			{
+				if (newsList && newsCache)
+				{
+					var items:Array = newsCache.allNewsItems;
+					newsList.dataProvider = new ArrayCollection( items ); 
+				}
+			}
+			
+		]]>
+	</fx:Script>
+	<s:List width="90%" horizontalCenter="0" height="100%"
+			itemRenderer="com.knomedia.views.renderers.NewsRenderer"
+			id="newsList"
+			>
+		
 	</s:List>
 </s:View>

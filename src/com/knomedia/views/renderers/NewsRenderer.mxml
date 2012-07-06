@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:IconItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					xmlns:s="library://ns.adobe.com/flex/spark" 
+					labelField="heading"
+					labelFunction="createLabel"
+					messageFunction="createMessage"
+					creationComplete="init()"
+					fontSize="14"
+					messageStyleName="messageFontStyle"
+					
+					>
+	
+	<!--iconField="icon" iconWidth="64" iconHeight="64"
+	decorator="decorator"-->
+	<fx:Style>
+		@namespace s "library://ns.adobe.com/flex/spark";
+		
+		.messageFontStyle {
+			fontSize: 13;
+			/* color: #949E94; */
+		}
+		#labelDisplay{
+			fontWeight: bold;
+		}
+	</fx:Style>
+	<fx:Script>
+		<![CDATA[
+			import com.knomedia.models.NewsModel;
+			
+			import flash.globalization.DateTimeFormatter;
+			import flash.globalization.DateTimeStyle;
+			import flash.globalization.LocaleID;
+			
+			
+			private var df:DateTimeFormatter;
+			
+			private function init():void
+			{
+				df = new DateTimeFormatter( LocaleID.DEFAULT, DateTimeStyle.SHORT, DateTimeStyle.LONG );
+				df.setDateTimePattern( "MM/dd h:mm a"); 
+			}
+			
+			private function createLabel( item:Object ):String
+			{
+				if (!df)
+				{
+					init();
+				}
+				return item.heading + " - " + df.format(item.published)
+			}
+			private function createMessage( item:Object ):String
+			{
+				return item.body + "\n-- " + item.author;
+			}
+		]]>
+	</fx:Script>
+</s:IconItemRenderer>
