@@ -1,9 +1,17 @@
 package com.knomedia.cache
 {
+	import com.knomedia.events.CacheEvent;
+	
 	import flash.events.IEventDispatcher;
+	
+	
 	
 	public class NewsCache extends AbstractCache
 	{
+		
+		[Dispatcher]
+		public var dispatcher:IEventDispatcher;
+		
 		public function NewsCache(target:IEventDispatcher=null)
 		{
 			super(target);
@@ -25,13 +33,21 @@ package com.knomedia.cache
 		public function set allNewsItems( value:Array ):void
 		{
 			so.setValue( "allNewsItems", value );
+			notifyUpdate();
 		}
+		
 		
 		public function addRecentNewsItems( items:Array ):void
 		{
-			var current:Array = this.allNewsItems;
-			current.splice( -1, 0, items );
-			allNewsItems = current;
+			items.reverse();
+			allNewsItems = items.concat( allNewsItems );
+			
+			notifyUpdate();
+		}
+		
+		private function notifyUpdate():void
+		{
+			dispatcher.dispatchEvent( new CacheEvent(CacheEvent.NEWS_UPDATED) );
 		}
 	}
 }
