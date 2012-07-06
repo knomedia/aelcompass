@@ -4,7 +4,7 @@
 					labelField="heading"
 					labelFunction="createLabel"
 					messageFunction="createMessage"
-					creationComplete="init()"
+					
 					fontSize="14"
 					fontWeight="bold"
 					messageStyleName="messageFontStyle"
@@ -26,25 +26,25 @@
 		<![CDATA[
 			import com.knomedia.models.NewsModel;
 			
-			import flash.globalization.DateTimeFormatter;
+			/* import flash.globalization.DateTimeFormatter;
 			import flash.globalization.DateTimeStyle;
 			import flash.globalization.LocaleID;
 			
 			
-			private var df:DateTimeFormatter;
+			private var df:DateTimeFormatter; */
 			
-			private function init():void
+			/* private function init():void
 			{
 				df = new DateTimeFormatter( LocaleID.DEFAULT, DateTimeStyle.SHORT, DateTimeStyle.LONG );
 				df.setDateTimePattern( "MM/dd h:mm a"); 
-			}
+			} */
 			
 			private function createLabel( item:Object ):String
 			{
-				if (!df)
+				/* if (!df)
 				{
 					init();
-				}
+				} */
 				return item.heading; // + " - " + df.format(item.published)
 			}
 			private function createMessage( item:Object ):String
