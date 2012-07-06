@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="AEL News"
+		viewActivate="onActivate()">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			import com.knomedia.models.NewsModel;
+			
+			import flash.globalization.DateTimeFormatter;
+			import flash.globalization.DateTimeStyle;
+			import flash.globalization.LocaleID;
+			
+			private function init():void
+			{
+				
+			}
+			 
+			private function onActivate():void
+			{
+				var df:DateTimeFormatter = new DateTimeFormatter( LocaleID.DEFAULT, DateTimeStyle.SHORT, DateTimeStyle.LONG );
+				df.setDateTimePattern( "h:mm a - MM/dd/yy ");
+				var news:NewsModel = NewsModel( data );
+				headerTF.text = news.heading;
+				bodyTF.text = news.body;
+				pubTF.text = df.format( news.published );
+				authorTF.text =  "Submitted by: " + news.author;
+			}
+		]]>
+	</fx:Script>
+	<s:navigationContent>
+		<s:Button label="All News" click="navigator.popView()"
+				  />
+	</s:navigationContent>
+	<s:VGroup paddingTop="15"
+			  paddingRight="15"
+			  paddingBottom="15"
+			  paddingLeft="15"
+			  width="100%"
+			  height="100%">
+		<s:TextArea editable="false" id="headerTF" width="100%" borderVisible="false" contentBackgroundAlpha="0"
+					fontWeight="bold"/>
+		<s:Label id="pubTF" width="100%" paddingLeft="10"  />
+		<s:Group width="100%" height="100%">
+			<s:Scroller top="5" bottom="5" left="5" right="5"
+						horizontalScrollPolicy="off"
+						verticalScrollPolicy="auto">
+				<s:VGroup width="100%" height="100%">
+					
+					<s:TextArea width="100%" id="bodyTF" editable="false"
+								skinClass="spark.skins.mobile.TextAreaSkin"
+								borderVisible="false"
+								/>
+				</s:VGroup>
+			</s:Scroller>
+			<s:Rect width="100%" height="100%" radiusX="5" radiusY="5" >
+				<s:stroke>
+					<s:SolidColorStroke color="0xDDDDDD" pixelHinting="true" />
+				</s:stroke>
+			</s:Rect>
+		</s:Group>
+		<s:Label id="authorTF" width="100%" paddingLeft="10" />
+	</s:VGroup>
+</s:View>

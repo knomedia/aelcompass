@@ -10,6 +10,7 @@
 	<fx:Script>
 		<![CDATA[
 			import com.knomedia.cache.NewsCache;
+			import com.knomedia.models.NewsModel;
 			
 			import mx.collections.ArrayCollection;
 			
@@ -25,7 +26,6 @@
 			[EventHandler(event="CacheEvent.NEWS_UPDATED")]
 			public function onNewsUpdate():void
 			{
-				trace("seeing news update");
 				updateDP();
 			}
 			
@@ -38,11 +38,19 @@
 				}
 			}
 			
+			private function onItemSelect():void
+			{
+				var newsData:NewsModel = NewsModel( newsList.selectedItem );
+				navigator.pushView( NewsDetailView, newsData );
+			}
+			
 		]]>
 	</fx:Script>
-	<s:List width="90%" horizontalCenter="0" height="100%"
+	<s:List width="90%" horizontalCenter="0" height="90%"
+			verticalCenter="0"
 			itemRenderer="com.knomedia.views.renderers.NewsRenderer"
 			id="newsList"
+			change="onItemSelect()"
 			>
 		
 	</s:List>
