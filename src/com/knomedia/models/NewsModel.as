@@ -1,5 +1,6 @@
 package com.knomedia.models
 {
+	[RemoteClass(alias="com.knomedia.models.NewsModel")]
 	public class NewsModel
 	{
 		public var heading:String;
@@ -24,12 +25,14 @@ package com.knomedia.models
 		
 		private static function parseDate( str : String ) : Date
 		{
-			var matches : Array = str.match(/(\d\d\d\d)-(\d\d)-(\d\d)/);
+			var matches : Array = str.match(/(\d\d\d\d)-(\d\d)-(\d\d) (\d\d):(\d\d):(\d\d)/);
 			
 			var d : Date = new Date();
 			
 			d.setUTCFullYear(int(matches[1]), int(matches[2]) - 1, int(matches[3]));
-			
+			d.hours = int(matches[4]);
+			d.minutesUTC = int(matches[5]);
+			d.secondsUTC = int(matches[6]);
 			return d;
 		}
 	}
