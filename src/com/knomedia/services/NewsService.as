@@ -14,7 +14,8 @@ package com.knomedia.services
 	public class NewsService extends EventDispatcher
 	{
 		private var _srv:HTTPService;
-		private const GATEWAY:String = "http://localhost/aelcompass/news";
+		private const LIVE_GATEWAY:String = "http://aelcompass.com/news";
+		private const LOCAL_GATEWAY:String = "http://localhost/aelcompass/news";
 		
 		[Dispatcher]
 		public var dispatcher:IEventDispatcher;
@@ -24,7 +25,7 @@ package com.knomedia.services
 		{
 			super(target);
 			_srv = new HTTPService();
-			_srv.url = GATEWAY;
+			_srv.url = LOCAL_GATEWAY;
 			_srv.resultFormat = "text";
 			_srv.addEventListener(ResultEvent.RESULT, onResult);
 			_srv.addEventListener(FaultEvent.FAULT, onFault);
