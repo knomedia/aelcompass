@@ -20,9 +20,12 @@ package com.knomedia.commands
 		
 		public function execute():void
 		{
-			newsSrv.getNewsFromDate( newsCache.lastNewsDate );
+			//newsSrv.getNewsFromDate( newsCache.lastNewsDate );
 			
-			/*newsCache.allNewsItems = [];
+			newsSrv.getNewsFromDate( new Date(0) );
+			
+			/*trace("wiping old news items");
+			newsCache.allNewsItems = [];
 			newsCache.lastNewsDate = new Date( 0 );*/
 		}
 	}

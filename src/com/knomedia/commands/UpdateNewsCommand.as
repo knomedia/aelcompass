@@ -27,7 +27,8 @@ package com.knomedia.commands
 		{
 			if ( newsItems.length > 0 )
 			{
-				newsCache.addRecentNewsItems( newsItems );
+				//newsCache.addRecentNewsItems( newsItems );
+				newsCache.allNewsItems = newsItems;
 				newsCache.lastNewsDate = new Date(); 
 			} else {
 				trace("UpdateNewsCommand.execute: no news updates to push");
