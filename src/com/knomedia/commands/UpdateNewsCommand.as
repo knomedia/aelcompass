@@ -25,8 +25,13 @@ package com.knomedia.commands
 		
 		public function execute():void
 		{
-			newsCache.addRecentNewsItems( newsItems );
-			newsCache.lastNewsDate = new Date(); 
+			if ( newsItems.length > 0 )
+			{
+				newsCache.addRecentNewsItems( newsItems );
+				newsCache.lastNewsDate = new Date(); 
+			} else {
+				trace("UpdateNewsCommand.execute: no news updates to push");
+			}
 		}
 	}
 }

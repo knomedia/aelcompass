@@ -26,6 +26,7 @@ package com.knomedia.commands
 			mapCommand( AppEvent.REQUEST_AUTH, RequestAuthenticationCommand, AppEvent, false );
 			mapCommand( RegistrationServiceEvent.AUTHENTICATION_COMPLETE, SaveUserDataCommand, RegistrationServiceEvent, false );
 			mapCommand( RegistrationServiceEvent.ALL_SESSIONS_LOADED, UpdateSessionDataCommand, RegistrationServiceEvent, false );
+			mapCommand( RegistrationServiceEvent.ALL_SESSIONS_LOADED, LoadLatestNewsCommand, RegistrationServiceEvent, false );
 			mapCommand( RegistrationServiceEvent.SERVICE_ERROR, NotifyServiceErrorCommand, RegistrationServiceEvent, false );
 			
 			mapCommand( SettingsEvent.LOGOUT, RemoveUserDataCommand, SettingsEvent, false );

@@ -5,6 +5,7 @@ package com.knomedia.services
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
 	
+	import mx.formatters.DateFormatter;
 	import mx.rpc.Fault;
 	import mx.rpc.events.FaultEvent;
 	import mx.rpc.events.ResultEvent;
@@ -17,6 +18,7 @@ package com.knomedia.services
 		
 		[Dispatcher]
 		public var dispatcher:IEventDispatcher;
+		private var dt:DateFormatter;
 		
 		public function NewsService(target:IEventDispatcher=null)
 		{
@@ -26,6 +28,9 @@ package com.knomedia.services
 			_srv.resultFormat = "text";
 			_srv.addEventListener(ResultEvent.RESULT, onResult);
 			_srv.addEventListener(FaultEvent.FAULT, onFault);
+			
+			dt = new DateFormatter();
+			dt.formatString = "YYYY-MM-DD J:NN:SS";
 			
 		}
 
@@ -54,9 +59,11 @@ package com.knomedia.services
 		public function getNewsFromDate( date:Date ):void
 		{
 			var params:Object = {};
-			params.lastDate = date.getDate();
+			params.lastDate = dt.format( date );
 			
 			_srv.send( params );
 		}
+		
+		
 	}
 }
