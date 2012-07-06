@@ -41,6 +41,10 @@
 									label="name"/>
 			</fx:Component>
 		</s:itemRenderer>
+		<s:layout>
+			<s:VerticalLayout variableRowHeight="false" gap="0" horizontalAlign="justify"
+							  paddingBottom="2" paddingTop="2"/> 
+		</s:layout>
 	</s:List>
 	</s:Group>
 </s:View>

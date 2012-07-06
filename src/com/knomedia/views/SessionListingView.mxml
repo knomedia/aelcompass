@@ -43,7 +43,8 @@
 			skinClass="com.knomedia.skins.ListSkin"
 			>
 		<s:layout>
-			<s:VerticalLayout variableRowHeight="true" gap="3" horizontalAlign="justify" /> 
+			<s:VerticalLayout variableRowHeight="true" gap="3" horizontalAlign="justify"
+							  paddingBottom="2" paddingTop="2"/> 
 		</s:layout>
 		
 	</s:List>
