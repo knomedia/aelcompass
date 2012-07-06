@@ -6,6 +6,7 @@
 					messageFunction="createMessage"
 					creationComplete="init()"
 					fontSize="14"
+					fontWeight="bold"
 					messageStyleName="messageFontStyle"
 					
 					>
@@ -17,11 +18,9 @@
 		
 		.messageFontStyle {
 			fontSize: 13;
-			/* color: #949E94; */
+			fontWeight:normal;
 		}
-		#labelDisplay{
-			fontWeight: bold;
-		}
+		
 	</fx:Style>
 	<fx:Script>
 		<![CDATA[
@@ -46,11 +45,16 @@
 				{
 					init();
 				}
-				return item.heading + " - " + df.format(item.published)
+				return item.heading; // + " - " + df.format(item.published)
 			}
 			private function createMessage( item:Object ):String
 			{
-				return item.body + "\n-- " + item.author;
+				var body:String = item.body as String;
+				if (body.length > 130)
+				{
+					body = body.substring( 0, 127 ) + "...";
+				}
+				return body;
 			}
 		]]>
 	</fx:Script>
