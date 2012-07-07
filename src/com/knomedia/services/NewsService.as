@@ -25,7 +25,7 @@ package com.knomedia.services
 		{
 			super(target);
 			_srv = new HTTPService();
-			_srv.url = LOCAL_GATEWAY;
+			_srv.url = LIVE_GATEWAY;
 			_srv.resultFormat = "text";
 			_srv.addEventListener(ResultEvent.RESULT, onResult);
 			_srv.addEventListener(FaultEvent.FAULT, onFault);
