@@ -7,14 +7,6 @@ Must Have
 	
 	Make sure user always has a session selected
 	
-	
-	
-		
-
-
-	
-	
-
 
 DONE -- TabBar doesn't go away when on app (consider longer delay)
 DONE -- Add busy cursor during auth network calls
