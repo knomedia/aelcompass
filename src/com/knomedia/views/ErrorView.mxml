@@ -9,11 +9,16 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import com.knomedia.models.NavModel;
+			
 			import spark.transitions.SlideViewTransition;
 			import spark.transitions.SlideViewTransitionMode;
 			import spark.transitions.ViewTransitionDirection;
 			
 			private var trans:SlideViewTransition;
+			
+			[Inject]
+			public var navModel:NavModel;
 			
 			private function onActivate():void
 			{
@@ -23,16 +28,19 @@
 					trans.mode = SlideViewTransitionMode.UNCOVER;
 					trans.direction = ViewTransitionDirection.UP;
 				}
-				var message:String = "Sad, Sad Panda. We're unable to contact the web server. As such you will not be allowed to update your registration";
+				var message:String = "Sad, Sad Panda. We're unable to contact the web server. As such you will not be allowed to update your registration, or re-sync your data.";
 				if (data.faultString)
 				{
 					//title = data.faultString;
 				}
 				errorTF.text = message;
+				
+				navModel.hide();
 			}
 			private function killWindow():void
 			{
 				navigator.popView( trans );
+				navModel.show();
 			}
 		]]>
 	</fx:Script>
