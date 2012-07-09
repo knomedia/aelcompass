@@ -40,6 +40,7 @@ package com.knomedia.commands
 			mapCommand( SessionRequestEvent.REMOVE, RemoveSessionRequestCommand, SessionRequestEvent, false );
 			
 			mapCommand( SessionSwapEvent.SWAP_SESSIONS, ConfirmSessionSwapCommand, SessionSwapEvent, false );
+			mapCommand( SessionSwapEvent.SINGLE_ADD, DoSessionAddCommand, SessionSwapEvent, false );
 			mapCommand( SessionSwapEvent.CONFIRMED_SWAP, DoSessionSwapCommand, SessionSwapEvent, false );
 			
 			mapCommand( AppEvent.APP_ERROR, ShowGlobalErrorCommand, AppEvent, false );

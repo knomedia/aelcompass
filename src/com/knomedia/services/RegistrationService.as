@@ -2,6 +2,7 @@ package com.knomedia.services
 {
 	import com.adobe.protocols.dict.events.ErrorEvent;
 	import com.knomedia.events.RegistrationServiceEvent;
+	import com.knomedia.events.SettingsEvent;
 	import com.knomedia.factories.UserDataFactory;
 	import com.knomedia.models.Session;
 	
@@ -127,9 +128,7 @@ package com.knomedia.services
 			params.ws_action = ServiceActions.CHANGE_REGISTRATION;
 			params.ws_id = params.test_ws_id;
 			params.registration_id = _registrationId;
-		//	params.userData = [ userData ];
 			params = addAllUserData( data, params );
-			dumpParams( params );
 			
 			_srv.send( params );
 		}
@@ -154,11 +153,24 @@ package com.knomedia.services
 
 		private function onUpdateUserData(event:ResultEvent):void
 		{
-			_registrationId = "";	
-			if (event.result is String )
+			_srv.removeEventListener(ResultEvent.RESULT, onUpdateUserData );
+			_registrationId = "";
+			var result:Object = JSON.parse( event.result as String);
+			/*for( var prop:* in result)
 			{
-				throw new Error("Update service failed");
-			}
+				if (!prop is Array)
+				{
+					trace(prop + ": " + result[prop]);
+					
+				}
+				if (result[prop] == "on")
+				{
+				}
+			}*/
+			
+			trace("RegistrationService: userDataUpdateComplete refreshing all data");
+			dispatcher.dispatchEvent( new SettingsEvent( SettingsEvent.REFRESH ) );
+			
 		}
 	}
 }

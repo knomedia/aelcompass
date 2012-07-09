@@ -9,27 +9,23 @@ package com.knomedia.commands
 	
 	import org.swizframework.utils.commands.IEventAwareCommand;
 	
-	public class DoSessionSwapCommand implements IEventAwareCommand
+	public class DoSessionAddCommand implements IEventAwareCommand
 	{
-		[Inject]
-		public var userCache:UserDataCache;
+		private var _sessionAdd:Session;
 		
 		[Inject]
 		public var regService:RegistrationService;
 		
-		private var _addSession:Session;
-		private var _removeSession:Session;
+		[Inject]
+		public var userCache:UserDataCache;
 		
-		
-		public function DoSessionSwapCommand()
+		public function DoSessionAddCommand()
 		{
 		}
 		
 		public function set event(value:Event):void
 		{
-			var evt:SessionSwapEvent = SessionSwapEvent( value );
-			_addSession = evt.sessionToAdd;
-			_removeSession = evt.sessionToRemove;
+			_sessionAdd = SessionSwapEvent( value ).sessionToAdd;
 		}
 		
 		public function execute():void
@@ -41,23 +37,9 @@ package com.knomedia.commands
 		private function updateUserData( data:Object ):Object
 		{
 			
-			// remove old session id
-			if (_removeSession)
-			{
-				for (var prop:* in data)
-				{
-					if ( prop == _removeSession.sessionId )
-					{
-						//data[prop] = "off";
-						delete data[prop];
-						trace("removing: " + prop );
-						break;
-					}
-				}
-			}
 			// add new session
-			data[_addSession.sessionId] = "on";
-			trace("adding: " + _addSession.sessionId )
+			data[_sessionAdd.sessionId] = "on";
+			trace("adding: " + _sessionAdd.sessionId )
 			return data;
 		}
 	}

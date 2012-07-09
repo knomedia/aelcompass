@@ -48,10 +48,6 @@ package com.knomedia.commands
 			
 			dispatcher.dispatchEvent( evt );
 			
-			// confirm with user
-			// remove existing id from user data
-			// add new id to user data
-			// send off to registrationService
 		}
 		
 		private function findSession():Session
