@@ -6,6 +6,7 @@ package com.knomedia.commands
 	import com.knomedia.events.SessionCacheEvent;
 	import com.knomedia.models.Session;
 	import com.knomedia.models.SessionCollection;
+	import com.knomedia.utils.UserDataUtils;
 	
 	import flash.events.Event;
 	import flash.events.IEventDispatcher;
@@ -20,11 +21,12 @@ package com.knomedia.commands
 		[Inject]
 		public var sessionCollection:SessionCollection;
 		
+		[Inject]
+		public var userCache:UserDataCache;
+		
 		[Dispatcher]
 		public var dispatcher:IEventDispatcher;
 		
-		[Inject]
-		public var userCache:UserDataCache;
 		
 		private var _sessionData:Array;
 		
@@ -42,39 +44,10 @@ package com.knomedia.commands
 			// do something to determine if the data is actually different
 			// no need to do all this if the data hasn't been updated
 			
-			_sessionData = updateSessionsWithUserData( _sessionData );
+			_sessionData = UserDataUtils.updateSessionsWithUserData( _sessionData, userCache );
 			sessionCollection.allSessions = _sessionData;
 			sessionCache.setAllSessions( _sessionData );
 			sessionCache.lastUpdated = new Date();
-			
-		}
-		
-		private function updateSessionsWithUserData( sessions:Array ):Array
-		{
-			var ids:Array = createIdArray();
-			for each( var session:Session in sessions)
-			{
-				var index:int = ids.indexOf( session.sessionId );
-				if (index != -1)
-				{
-					session.userAttending = true;
-					//trace("Attending: " + session.day + " " + session.start + " " + session.name );
-				}
-			}
-			return sessions;
-		}
-		
-		private function createIdArray():Array
-		{
-			var ids:Array = [];
-			for( var prop:* in userCache.userData)
-			{
-				if (userCache.userData[ prop ] =="on" )
-				{
-					ids.push( prop )
-				}
-			}
-			return ids;
 		}
 	}
 }
