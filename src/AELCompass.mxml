@@ -52,7 +52,6 @@
 			private function onAppLoaded():void
 			{
 				loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, pm.onUncaughtError);
-				trace("Are we listening: " + loaderInfo.uncaughtErrorEvents.hasEventListener( UncaughtErrorEvent.UNCAUGHT_ERROR ) )
 				var tn:TabbedViewNavigator = TabbedViewNavigator( this.tabbedNavigator ); 
 				pm.register( tn );
 				

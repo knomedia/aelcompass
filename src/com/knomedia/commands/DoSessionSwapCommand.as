@@ -46,12 +46,15 @@ package com.knomedia.commands
 			{
 				if ( prop == _removeSession.sessionId )
 				{
-					data[prop] = "off";
+					//data[prop] = "off";
+					delete data[prop];
+					trace("removing: " + prop );
 					break;
 				}
 			}
 			// add new session
 			data[_addSession.sessionId] = "on";
+			trace("adding: " + _addSession.sessionId )
 			return data;
 		}
 	}
