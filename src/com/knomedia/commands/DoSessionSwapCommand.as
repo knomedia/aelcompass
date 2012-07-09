@@ -51,7 +51,6 @@ package com.knomedia.commands
 						//data[prop] = "off";
 						delete data[prop];
 						trace("removing: " + prop );
-						break;
 					}
 				}
 			}
