@@ -9,6 +9,9 @@ package com.knomedia.events
 		public static const SWAP_SESSIONS:String = "swapSessions";
 		public static const SINGLE_ADD:String = "singleAdd";
 		public static const CONFIRMED_SWAP:String = "confirmedSwap";
+		public static const SUCCESS:String = "success";
+		public static const FAIL:String = "fail";
+		public static const FAULT:String = "fault";
 
 		private var _sessionToAdd:Session;
 		private var _sessionToRemove:Session;

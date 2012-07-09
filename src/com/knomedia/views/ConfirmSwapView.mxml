@@ -42,11 +42,13 @@
 				dispatcher.dispatchEvent( new SessionSwapEvent( SessionSwapEvent.CONFIRMED_SWAP, data.add, data.remove ) );
 			}
 			
+			[EventHandler(event="SessionSwapEvent.SUCCESS")]
 			public function onSwapComplete():void
 			{
 				bi.visible = false;
 				doCancel();
 			}
+			[EventHandler(event="SessionSwapEvent.FAIL")]
 			public function onSwapError():void
 			{
 				bi.visible = false;
@@ -56,6 +58,7 @@
 				error.visible = true;
 				error.includeInLayout = true;
 			}
+			
 		]]>
 	</fx:Script>
 	<s:Scroller width="90%" height="90%"

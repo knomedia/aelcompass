@@ -8,6 +8,8 @@ package com.knomedia.events
 		public static const AUTHENTICATION_COMPLETE:String = "authenticationComplete";
 		public static const AUTHENTICATION_FAILED:String = "authenticationFailed"
 		public static const SERVICE_ERROR:String = "serviceError";
+		
+		public static const USER_SESSION_UPDATED:String = "userSessionUpdated";
 
 		private var _sessionData:Array;
 		private var _userData:Object;

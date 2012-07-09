@@ -2,10 +2,12 @@ package com.knomedia.services
 {
 	import com.adobe.protocols.dict.events.ErrorEvent;
 	import com.knomedia.events.RegistrationServiceEvent;
+	import com.knomedia.events.SessionSwapEvent;
 	import com.knomedia.events.SettingsEvent;
 	import com.knomedia.factories.UserDataFactory;
 	import com.knomedia.models.Session;
 	
+	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
 	
@@ -120,9 +122,9 @@ package com.knomedia.services
 		// ----------------------------------------------------------
 		public function updateUserData( data:Object, registrationId:String ):void
 		{
-			
 			var userData:String = UserDataFactory.createJSONFromUserData( data );
 			_srv.addEventListener( ResultEvent.RESULT, onUpdateUserData);
+			_srv.addEventListener( FaultEvent.FAULT, onUpdateDataFault);
 			_registrationId = registrationId; 
 			var params:ServiceParams = new ServiceParams();
 			params.ws_action = ServiceActions.CHANGE_REGISTRATION;
@@ -132,15 +134,11 @@ package com.knomedia.services
 			
 			_srv.send( params );
 		}
-		private function dumpParams( params:ServiceParams ):void
+
+		private function onUpdateDataFault(event:FaultEvent):void
 		{
-			for( var prop:* in params)
-			{
-				trace( "" + prop + ": " + params[prop] );
-			}
-			trace("ws_action: " + params.ws_action );
-			trace("ws_id: " + params.ws_id);
-			trace("registration_id: " + params.registration_id );
+			//dispatcher.dispatchEvent( new SessionSwapEvent( SessionSwapEvent.FAULT , null, null ) );
+			_srv.removeEventListener( FaultEvent.FAULT, onUpdateDataFault )
 		}
 		private function addAllUserData( data:Object, params:ServiceParams):ServiceParams
 		{
@@ -154,22 +152,18 @@ package com.knomedia.services
 		private function onUpdateUserData(event:ResultEvent):void
 		{
 			_srv.removeEventListener(ResultEvent.RESULT, onUpdateUserData );
-			_registrationId = "";
-			var result:Object = JSON.parse( event.result as String);
-			/*for( var prop:* in result)
+			_srv.removeEventListener( FaultEvent.FAULT, onUpdateDataFault )
+			var userData:Object = UserDataFactory.createUserDataFromJSON( event.result as String );
+			var evt:SessionSwapEvent;
+			if ( isValidUserData( userData ) )
 			{
-				if (!prop is Array)
-				{
-					trace(prop + ": " + result[prop]);
-					
-				}
-				if (result[prop] == "on")
-				{
-				}
-			}*/
-			
-			trace("RegistrationService: userDataUpdateComplete refreshing all data");
-			dispatcher.dispatchEvent( new SettingsEvent( SettingsEvent.REFRESH ) );
+				dispatcher.dispatchEvent( new RegistrationServiceEvent(RegistrationServiceEvent.USER_SESSION_UPDATED, null, userData, _registrationId ) );
+				evt = new SessionSwapEvent( SessionSwapEvent.SUCCESS , null, null );
+			} else {
+				evt = new SessionSwapEvent( SessionSwapEvent.FAIL , null, null );
+			}
+			dispatcher.dispatchEvent( evt );
+			_registrationId = "";
 			
 		}
 	}

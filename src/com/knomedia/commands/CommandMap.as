@@ -44,6 +44,7 @@ package com.knomedia.commands
 			mapCommand( SessionSwapEvent.CONFIRMED_SWAP, DoSessionSwapCommand, SessionSwapEvent, false );
 			
 			mapCommand( AppEvent.APP_ERROR, ShowGlobalErrorCommand, AppEvent, false );
+			mapCommand( RegistrationServiceEvent.USER_SESSION_UPDATED, UpdateUserDataCacheCommand, RegistrationServiceEvent, false );
 			
 			
 			

@@ -4,9 +4,10 @@ Bugs
 Must Have
 	
 	
-	Ability to change your session selection
 	
-	Make Network Error View go full screen and disable tab buttons
+	Make sure user always has a session selected
+	
+	
 	
 		
 
@@ -35,4 +36,10 @@ DONE -- Caching / Collections
 
 
 DONE -- Move News service from localhost
+
+DONE -- Ability to change your session selection
+
+DONE -- Only allow user to change session when not full (Disables the Toggle box)
+
+DONE -- Make Network Error View go full screen and disable tab buttons
 
