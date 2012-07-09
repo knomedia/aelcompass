@@ -1,13 +1,14 @@
 package com.knomedia.events
 {
+	import com.knomedia.models.Session;
+	
 	import flash.events.Event;
-	import com.knomedia.models.Session;
-	import com.knomedia.models.Session;
 
 	public class SessionSwapEvent extends Event
 	{
 		public static const SWAP_SESSIONS:String = "swapSessions";
 		public static const SINGLE_ADD:String = "singleAdd";
+		public static const CONFIRMED_SWAP:String = "confirmedSwap";
 
 		private var _sessionToAdd:Session;
 		private var _sessionToRemove:Session;

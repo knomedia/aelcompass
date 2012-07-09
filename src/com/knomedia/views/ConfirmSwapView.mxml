@@ -7,10 +7,14 @@
 	</fx:Declarations>
 	<fx:Script>
 		<![CDATA[
+			import com.knomedia.events.SessionSwapEvent;
 			import com.knomedia.models.NavModel;
 			
 			[Inject]
 			public var navModel:NavModel
+			
+			[Dispatcher]
+			public var dispatcher:IEventDispatcher;
 			
 			
 			private function onActivate():void
@@ -35,6 +39,7 @@
 				error.includeInLayout = false;
 				
 				// ask service to process request
+				dispatcher.dispatchEvent( new SessionSwapEvent( SessionSwapEvent.CONFIRMED_SWAP, data.add, data.remove ) );
 			}
 			
 			public function onSwapComplete():void

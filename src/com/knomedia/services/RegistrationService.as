@@ -113,5 +113,52 @@ package com.knomedia.services
 			}
 			return ok;
 		}
+		
+		// ----------------------------------------------------------
+		//					UPDATE REGISTRATION
+		// ----------------------------------------------------------
+		public function updateUserData( data:Object, registrationId:String ):void
+		{
+			
+			var userData:String = UserDataFactory.createJSONFromUserData( data );
+			_srv.addEventListener( ResultEvent.RESULT, onUpdateUserData);
+			_registrationId = registrationId; 
+			var params:ServiceParams = new ServiceParams();
+			params.ws_action = ServiceActions.CHANGE_REGISTRATION;
+			params.ws_id = params.test_ws_id;
+			params.registration_id = _registrationId;
+		//	params.userData = [ userData ];
+			params = addAllUserData( data, params );
+			dumpParams( params );
+			
+			_srv.send( params );
+		}
+		private function dumpParams( params:ServiceParams ):void
+		{
+			for( var prop:* in params)
+			{
+				trace( "" + prop + ": " + params[prop] );
+			}
+			trace("ws_action: " + params.ws_action );
+			trace("ws_id: " + params.ws_id);
+			trace("registration_id: " + params.registration_id );
+		}
+		private function addAllUserData( data:Object, params:ServiceParams):ServiceParams
+		{
+			for(var prop:* in data)
+			{
+				params[prop] = data[prop];
+			}
+			return params;
+		}
+
+		private function onUpdateUserData(event:ResultEvent):void
+		{
+			_registrationId = "";	
+			if (event.result is String )
+			{
+				throw new Error("Update service failed");
+			}
+		}
 	}
 }

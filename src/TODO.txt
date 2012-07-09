@@ -4,13 +4,10 @@ Bugs
 Must Have
 	
 	
-	Move News service from localhost
-	
 	Ability to change your session selection
 	
 	Make Network Error View go full screen and disable tab buttons
 	
-	Android
 		
 
 
@@ -37,4 +34,5 @@ DONE -- Caching / Collections
 		Be sure to update views where necessary
 
 
+DONE -- Move News service from localhost
 

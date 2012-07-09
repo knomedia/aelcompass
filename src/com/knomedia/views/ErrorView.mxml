@@ -29,9 +29,10 @@
 					trans.direction = ViewTransitionDirection.UP;
 				}
 				var message:String = "Sad, Sad Panda. We're unable to contact the web server. As such you will not be allowed to update your registration, or re-sync your data.";
-				if (data.faultString)
+				
+				if ( data is String )
 				{
-					//title = data.faultString;
+					message = data as String;
 				}
 				errorTF.text = message;
 				

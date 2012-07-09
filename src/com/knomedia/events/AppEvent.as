@@ -9,6 +9,8 @@ package com.knomedia.events
 		public static const REQUEST_AUTH:String = "requestAuth";
 		public static const OKAY_TO_LOAD:String = "okayToLoad";
 		
+		public static const APP_ERROR:String = "appError"
+		
 		private var _data:Object;
 
 		public function AppEvent(type:String, data:Object = null)

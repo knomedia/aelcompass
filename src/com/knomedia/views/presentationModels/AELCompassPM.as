@@ -8,6 +8,7 @@ package com.knomedia.views.presentationModels
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
 	import flash.events.TimerEvent;
+	import flash.events.UncaughtErrorEvent;
 	import flash.utils.Timer;
 	import flash.utils.setInterval;
 	
@@ -51,6 +52,12 @@ package com.knomedia.views.presentationModels
 			_appNav = viewNavigator;
 			navModel.navigator = _appNav;
 			dispatcher.dispatchEvent( new AppEvent( AppEvent.INIT ) );
+		}
+		
+		public function onUncaughtError(event:UncaughtErrorEvent):void
+		{
+			trace(event.error.message);
+			dispatcher.dispatchEvent( new AppEvent( AppEvent.APP_ERROR, "Ground control we have a problem. This is embarrassing... Looks like something has gone wrong. You will most likely need to restart the app. Sorry about that! " ) );
 		}
 		
 		private function getSelectedNav():ViewNavigator
