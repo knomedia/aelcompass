@@ -21,7 +21,6 @@
 				_session = Session( data );
 				this.title = _session.day + " - " + _session.start;
 				titleTF.text = _session.name;
-				//trace(_session.info);
 				StyleableTextField( infoTF.textDisplay ).htmlText = _session.info;
 				
 				var infoLines:int = 0;
@@ -30,9 +29,7 @@
 					infoLines += StyleableTextField(infoTF.textDisplay).getLineMetrics(i).height;
 				}
 				infoTF.height = infoLines;
-				//trace("height adjusted to: " + infoTF.height);
 				attendingCB.selected = _session.userAttending;
-				//countStatsTF.text = "Registered: " + _session.count + ", Capacity: " + _session.limit;
 				countTF.text = "Registered: " + _session.count;
 				limitTF.text = "Capacity: " + ( (_session.limit == 0)? "Unlimited" : _session.limit );
 				setupCB();
