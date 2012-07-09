@@ -70,8 +70,11 @@ package com.knomedia.views.presentationModels
 		[EventHandler(event="RegistrationServiceEvent.AUTHENTICATION_FAILED")]
 		public function showFailedAttempt():void
 		{
-			_errorLabel.text = "Doooh... Registration ID not found";
-			_busyIndicator.visible = false;
+			if ( _errorLabel && _busyIndicator )
+			{
+				_errorLabel.text = "Doooh... Registration ID not found";
+				_busyIndicator.visible = false;
+			}
 			
 		}
 	}
