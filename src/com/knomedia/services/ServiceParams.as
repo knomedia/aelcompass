@@ -2,7 +2,8 @@ package com.knomedia.services
 {
 	public dynamic class ServiceParams
 	{
-		public static const SERVICE_GATEWAY:String = "https://www.ce1.com/cgi-bin/form-proc-jmadsen.cgi";
+		//public static const SERVICE_GATEWAY:String = "https://www.ce1.com/cgi-bin/form-proc-jmadsen.cgi";
+		public static const SERVICE_GATEWAY:String = "https://www.ce1.com/cgi-bin/form-proc-ws.cgi";
 		
 		public var ws_id:String;
 		public var ws_return:String = "JSON";
