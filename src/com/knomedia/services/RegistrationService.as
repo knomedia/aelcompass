@@ -51,12 +51,12 @@ package com.knomedia.services
 		//					GET ALL PRESENTATION DATA
 		// ----------------------------------------------------------
 		
-		public function getAllPresentationData():void
+		public function getAllPresentationData( registrationId:String ):void
 		{
 			var params:ServiceParams = new ServiceParams();
 			params.ws_action = ServiceActions.GET_ALL_PRESENTATION_DATA;
-			params.ws_id = params.test_ws_id;
-			params.registration_id = params.test_registration_id;
+			params.ws_id = params.active_ws_id;
+			params.registration_id = registrationId
 			_srv.addEventListener( ResultEvent.RESULT, onAllPresentationDataLoaded);
 			
 			_srv.send( params );
@@ -86,7 +86,7 @@ package com.knomedia.services
 			
 			var params:ServiceParams = new ServiceParams();
 			params.ws_action = ServiceActions.AUTHENTICATE_USER;
-			params.ws_id = params.test_ws_id;
+			params.ws_id = params.active_ws_id;
 			params.registration_id = _registrationId;
 			_srv.addEventListener( ResultEvent.RESULT, onAuthenticationResult);
 			_srv.send( params );
@@ -128,7 +128,7 @@ package com.knomedia.services
 			_registrationId = registrationId; 
 			var params:ServiceParams = new ServiceParams();
 			params.ws_action = ServiceActions.CHANGE_REGISTRATION;
-			params.ws_id = params.test_ws_id;
+			params.ws_id = params.active_ws_id;
 			params.registration_id = _registrationId;
 			params = addAllUserData( data, params );
 			

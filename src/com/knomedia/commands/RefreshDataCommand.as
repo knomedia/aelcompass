@@ -31,7 +31,7 @@ package com.knomedia.commands
 			{
 				regSrv.authenticateUser( userCache.registrationId );
 			} else {
-				regSrv.getAllPresentationData();
+				regSrv.getAllPresentationData( userCache.registrationId );
 			}
 		}
 	}

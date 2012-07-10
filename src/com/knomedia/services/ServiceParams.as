@@ -12,8 +12,8 @@ package com.knomedia.services
 		
 		public var registration_id:String;
 		
-		public var test_ws_id:String = "AABBCCDD1";
-		public var test_registration_id:String = "14E1-6680";
+		//public var active_ws_id:String = "AABBCCDD1"; // test service
+		public var active_ws_id:String = "KDJE83HW8"; // live service
 		
 		public function ServiceParams()
 		{
