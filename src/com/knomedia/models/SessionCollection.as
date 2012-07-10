@@ -139,6 +139,20 @@ package com.knomedia.models
 			return direction;
 			
 		}
+		
+		public function getSessionById( id:String ):Session
+		{
+			var reqSession:Session;
+			for each(var sess:Session in allSessions)
+			{
+				if (sess.sessionId == id)
+				{
+					reqSession = sess;
+					break;
+				}
+			}
+			return reqSession;
+		}
 
 	}
 }

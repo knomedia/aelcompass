@@ -4,6 +4,7 @@ package com.knomedia.commands
 	import com.knomedia.cache.UserDataCache;
 	import com.knomedia.events.AppEvent;
 	import com.knomedia.events.RegistrationServiceEvent;
+	import com.knomedia.events.SettingsEvent;
 	import com.knomedia.models.SessionCollection;
 	import com.knomedia.utils.UserDataUtils;
 	
@@ -51,6 +52,8 @@ package com.knomedia.commands
 			sessionCollection.allSessions = _sessionData;
 			sessionCache.setAllSessions( _sessionData );
 			sessionCache.lastUpdated = new Date();
+			
+			dispatcher.dispatchEvent( new SettingsEvent( SettingsEvent.REFRESH ) );
 			
 		}
 	}

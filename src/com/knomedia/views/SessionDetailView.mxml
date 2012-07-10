@@ -6,6 +6,7 @@
 		<![CDATA[
 			import com.knomedia.events.SessionRequestEvent;
 			import com.knomedia.models.Session;
+			import com.knomedia.models.SessionCollection;
 			
 			import spark.components.supportClasses.StyleableStageText;
 			import spark.components.supportClasses.StyleableTextField;
@@ -15,6 +16,9 @@
 			
 			[Dispatcher]
 			public var dispatcher:IEventDispatcher;
+			
+			[Inject]
+			public var sessionCollection:SessionCollection;
 			
 			protected function onActive(event:ViewNavigatorEvent):void
 			{
@@ -30,9 +34,13 @@
 				}
 				infoTF.height = infoLines;
 				attendingCB.selected = _session.userAttending;
+				setUpLabels();
+				setupCB();
+			}
+			private function setUpLabels():void
+			{
 				countTF.text = "Registered: " + _session.count;
 				limitTF.text = "Capacity: " + ( (_session.limit == 0)? "Unlimited" : _session.limit );
-				setupCB();
 			}
 			
 			private function setupCB():void
@@ -61,6 +69,17 @@
 						evt = new SessionRequestEvent(SessionRequestEvent.REMOVE, _session);
 					}
 					dispatcher.dispatchEvent( evt );					
+				}
+			}
+			
+			[EventHandler(event="SessionCacheEvent.UPDATED")]
+			public function onSessionCacheChange():void
+			{
+				_session = sessionCollection.getSessionById( _session.sessionId );
+				if ( _session )
+				{
+					setUpLabels();
+					setupCB();
 				}
 			}
 			
