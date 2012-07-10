@@ -1,6 +1,7 @@
 package com.knomedia.views.presentationModels
 {
 	import com.knomedia.events.AppEvent;
+	import com.knomedia.models.NavModel;
 	
 	import flash.desktop.NativeApplication;
 	import flash.events.EventDispatcher;
@@ -23,7 +24,10 @@ package com.knomedia.views.presentationModels
 		
 		private var _errorLabel:Label;
 		private var _registrationTF:TextInput;
-			private var _busyIndicator:BusyIndicator;
+		private var _busyIndicator:BusyIndicator;
+		
+		[Inject]
+		public var navModel:NavModel;
 			
 		public function AuthenticationViewPM(target:IEventDispatcher=null)
 		{
@@ -42,6 +46,10 @@ package com.knomedia.views.presentationModels
 			_registrationTF = registrationTF;
 			_busyIndicator = busyIndicator;
 			NativeApplication.nativeApplication.addEventListener( KeyboardEvent.KEY_DOWN, onKeyDown);
+			if (navModel)
+			{
+				navModel.hide();
+			}
 		}
 		
 		public function onDeactivate():void
