@@ -44,6 +44,8 @@ package com.knomedia.commands
 			
 			sessionCollection.allSessions = [];
 			
+			sessionCache.resetData();
+			
 			dispatcher.dispatchEvent( new AppEvent( AppEvent.INIT ) );	
 		}
 	}

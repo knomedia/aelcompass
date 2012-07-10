@@ -25,6 +25,11 @@ package com.knomedia.cache
 			trace("so is cleared");*/
 		}
 		
+		public function resetData():void
+		{
+			so.clear();
+		}
+		
 		
 	}
 }
