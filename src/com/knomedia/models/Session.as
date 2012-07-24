@@ -76,10 +76,13 @@ package com.knomedia.models
 				patrn = new RegExp("\</p>", "i");
 				infoString = infoString.replace( patrn, "" );
 				
+				//ensure line break after location;
+				patrn = new RegExp("\</i>(?!<br)", "i");
+				infoString = infoString.replace( patrn, "</i><br />");
+				
 				// replace <br /> with \n\n
 				patrn = new RegExp("\<br( |)/>", "gi");
 				infoString = infoString.replace( patrn, "<br /><br />");
-				//trace(infoString);
 				
 				infoString = "<p>" + infoString + "</p>";
 			}
