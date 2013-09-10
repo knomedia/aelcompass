@@ -1,4 +1,4 @@
 aelcompass
 ==========
 
-Mobile AIR app for AEL Summer institute
+Mobile app for AEL Summer institute
